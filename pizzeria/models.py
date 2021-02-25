@@ -47,6 +47,10 @@ class SiteSettings(SingletonModel):
         verbose_name = 'Site Settings'
         verbose_name_plural = 'Site Settings'
 
+    def __str__(self):
+        return f'{self.site_name} settings'
+
+
 
 class PizzaUser(AbstractUser):
     """
