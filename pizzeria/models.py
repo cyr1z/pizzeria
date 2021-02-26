@@ -5,6 +5,7 @@ from autoslug import AutoSlugField
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
+
 # Create your models here.
 
 
@@ -49,7 +50,6 @@ class SiteSettings(SingletonModel):
 
     def __str__(self):
         return f'{self.site_name} settings'
-
 
 
 class PizzaUser(AbstractUser):
