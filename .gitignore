@@ -332,3 +332,4 @@ pip-selfcheck.json
 #migrations/*
 # End of https://www.toptal.com/developers/gitignore/api/django,pycharm,venv,python
 
+geckodriver.log

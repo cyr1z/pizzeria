@@ -13,13 +13,13 @@ phonenumbers = "==8.12.18"
 psycopg2-binary = "==2.8.6"
 python-dotenv = "==0.15.0"
 pytz = "==2021.1"
-selenium = "==3.141.0"
 sqlparse = "==0.4.1"
 urllib3 = "==1.26.3"
 Django = "==3.1.7"
 Unidecode = "==1.2.0"
 
 [dev-packages]
+selenium = "*"
 
 [requires]
 python_version = "3.8"
