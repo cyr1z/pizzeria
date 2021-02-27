@@ -17,6 +17,7 @@ sqlparse = "==0.4.1"
 urllib3 = "==1.26.3"
 Django = "==3.1.7"
 Unidecode = "==1.2.0"
+pillow = "*"
 
 [dev-packages]
 selenium = "*"
