@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
@@ -31,20 +34,27 @@ ALLOWED_HOSTS = [_.strip() for _ in os.getenv("ALLOWED_HOSTS").split(',')]
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'django.contrib.staticfiles',
     'pizzeria.apps.PizzeriaConfig',
     'django_quill',
     'phonenumber_field',
+
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -66,6 +76,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -138,7 +149,32 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
+
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uk'
+
+MODELTRANSLATION_TRANSLATION_FILES = (
+    'pizzeria.translations',
+)
+
+
+# gettext = lambda s: s
+
+LANGUAGES = (
+    ('uk', _('Ukrainian')),
+    ('ru', _('Russian')),
+    ('en', _('English')),
+)
+# LANGUAGES = (
+#     ('uk', 'Ukrainian'),
+#     ('en', 'English'),
+#     ('ru', 'Russian'),
+# )
+# месторасположение файлов перевода
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 TIME_ZONE = 'Europe/Kiev'
 

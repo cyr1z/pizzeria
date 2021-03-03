@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django_quill.fields import QuillField
 from autoslug import AutoSlugField
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -28,23 +28,104 @@ class SingletonModel(models.Model):
 
 
 class SiteSettings(SingletonModel):
-    site_name = models.CharField(max_length=40, default='pizza')
-    support = models.EmailField(default='support@example.com')
-    contact_email = models.EmailField(default='support@example.com')
-    contact_telegram = models.CharField(max_length=255, null=True, blank=True)
-    contact_telegram_id = models.CharField(max_length=255, null=True,
-                                           blank=True)
-    contact_viber = models.CharField(max_length=255, null=True, blank=True)
-    phone_number = PhoneNumberField(blank=True, null=True)
-    phone_number_two = PhoneNumberField(blank=True, null=True)
-    map_coordinates = models.CharField(max_length=255, null=True, blank=True)
-    contact_about_text = QuillField(null=True, blank=True)
-    facebook_link = models.CharField(max_length=255, null=True, blank=True)
-    telegram_link = models.CharField(max_length=255, null=True, blank=True)
-    youtube_link = models.CharField(max_length=255, null=True, blank=True)
-    twitter_link = models.CharField(max_length=255, null=True, blank=True)
-    instagram_link = models.CharField(max_length=255, null=True, blank=True)
-    github_link = models.CharField(max_length=255, null=True, blank=True)
+    site_name = models.CharField(
+        max_length=40,
+        default='pizza',
+        verbose_name=_('Site name'),
+    )
+    support_email = models.EmailField(
+        default='support@example.com',
+        verbose_name=_('Support email'),
+    )
+    contact_email = models.EmailField(
+        default='support@example.com',
+        verbose_name=_('Contact email'),
+    )
+    contact_telegram = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Contact telegram'),
+    )
+    contact_telegram_id = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Contact telegram id'),
+    )
+    contact_viber = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Contact viber'),
+    )
+    phone_number = PhoneNumberField(
+        blank=True,
+        null=True,
+        verbose_name=_('Contact phone number'),
+    )
+    phone_number_two = PhoneNumberField(
+        blank=True,
+        null=True,
+        verbose_name=_('Second contact phone number'),
+    )
+    map_coordinates = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Map coordinates'),
+    )
+    contact_about_text_en = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('Contact about text English'),
+    )
+    contact_about_text_ru = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('Contact about text Russian'),
+    )
+    contact_about_text_uk = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('Contact about text Ukrainian'),
+    )
+    facebook_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Facebook link'),
+    )
+    telegram_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Telegram link'),
+    )
+    youtube_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Youtube link'),
+    )
+    twitter_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Twitter link'),
+    )
+    instagram_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Instagram Link'),
+    )
+    github_link = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Github Link'),
+    )
 
     class Meta:
         verbose_name = _('Site Settings')
@@ -62,42 +143,48 @@ class PizzaUser(AbstractUser):
     """
 
     class Languages(models.TextChoices):
-        UKRAINIAN = 'UK', _('Ukrainian')
-        RUSSIAN = 'RU', _('Russian')
-        ENGLISH = 'EN', _('English')
+        UKRAINIAN = 'uk', _('Ukrainian')
+        RUSSIAN = 'ru', _('Russian')
+        ENGLISH = 'en', _('English')
 
     language = models.CharField(
         max_length=2,
         choices=Languages.choices,
         default=Languages.UKRAINIAN,
+        verbose_name=_('language'),
     )
     about = models.TextField(
         max_length=100000,
         null=True,
-        blank=True
+        blank=True,
+        verbose_name=_('about'),
     )
     telegram_name = models.CharField(
         max_length=120,
         null=True,
         blank=True,
-        unique=True
+        unique=True,
+        verbose_name=_('telegram name'),
     )
     telegram_id = models.CharField(
         max_length=120,
         null=True,
         blank=True,
-        unique=True
+        unique=True,
+        verbose_name=_('telegram id'),
     )
     viber = models.CharField(
         max_length=120,
         null=True,
         blank=True,
-        unique=True
+        unique=True,
+        verbose_name=_('viber'),
     )
     phone_number = PhoneNumberField(
         blank=True,
         null=True,
-        unique=True
+        unique=True,
+        verbose_name=_('phone number'),
     )
     slug = AutoSlugField(populate_from='username')
 
@@ -122,28 +209,33 @@ class Category(models.Model):
     food category
     """
     title = models.CharField(
-        max_length=120
+        max_length=120,
+        verbose_name=_('Title'),
     )
     size_name = models.CharField(
-        max_length=120
+        max_length=120,
+        verbose_name=_('Size name'),
     )
     size_unit = models.CharField(
-        max_length=30
+        max_length=30,
+        verbose_name=_('Size unit'),
     )
     description = models.TextField(
         max_length=100000,
         null=True,
-        blank=True
+        blank=True,
+        verbose_name=_('Description'),
     )
     image = models.ImageField(
         verbose_name=_('Image'),
         upload_to='categories_images/',
         default='static/category.png',
         null=True,
-        blank=True
+        blank=True,
     )
-    is_published = models.BooleanField(
-        default=True
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_('Is active'),
     )
 
     @property
@@ -168,17 +260,20 @@ class Food(models.Model):
     Food
     """
     title = models.CharField(
-        max_length=120
+        max_length=120,
+        verbose_name=_('Title'),
     )
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name='foods'
+        related_name='foods',
+        verbose_name=_('Category'),
     )
     description = models.TextField(
         max_length=100000,
         null=True,
-        blank=True
+        blank=True,
+        verbose_name=_('Description'),
     )
     image = models.ImageField(
         verbose_name=_('Image'),
@@ -187,8 +282,13 @@ class Food(models.Model):
         null=True,
         blank=True
     )
-    is_published = models.BooleanField(
-        default=True
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_('Is active'),
+    )
+    is_vegeterian = models.BooleanField(
+        default=False,
+        verbose_name=_('Is vegeterian'),
     )
 
     @property
