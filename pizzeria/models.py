@@ -126,6 +126,13 @@ class SiteSettings(SingletonModel):
         blank=True,
         verbose_name=_('Github Link'),
     )
+    currency_symbol = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        unique=True,
+        verbose_name=_('Currency symbol'),
+    )
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -379,7 +386,8 @@ class Price(models.Model):
 
     def __str__(self):
         return f'"{self.food.title}" - {self.size.value} ' \
-               f'{self.size.category.size_unit}: {self.value} ₴'
+               f'{self.size.category.size_unit}: {self.value} ' \
+               f'{SiteSettings.objects.first().currency_symbol}'
 
 
 class Addon(models.Model):
@@ -420,10 +428,107 @@ class Addon(models.Model):
     price = models.FloatField(
         verbose_name=_("Price"),
     )
+    order_item = models.ManyToManyField(
+        'OrderItem',
+        verbose_name=_('Order Item'),
+        related_name='addons'
+    )
 
     class Meta:
         verbose_name = _("Addon")
         verbose_name_plural = _("Addons")
 
     def __str__(self):
-        return f'{self.title} - {self.price}₴'
+        return f'{self.title} - {self.price}' \
+               f' {SiteSettings.objects.first().currency_symbol}'
+
+
+class Order(models.Model):
+    """
+    Order
+    """
+
+    class Status(models.IntegerChoices):
+        CREATED = 0, _('Created')
+        ACCEPTED = 1, _('Accepted')
+        READY = 2, _('Ready')
+        DELIVERY = 3, _('Delivery')
+        GIVEN = 4, _('Given')
+
+    status = models.PositiveIntegerField(
+        choices=Status.choices,
+        default=Status.CREATED,
+        verbose_name=_('status'),
+    )
+    user = models.ForeignKey(
+        PizzaUser,
+        on_delete=models.CASCADE,
+        related_name='orders',
+        verbose_name=_('User'),
+    )
+    paid = models.BooleanField(
+        verbose_name=_('Paid'),
+    )
+    finished = models.BooleanField(
+        verbose_name=_('Finished'),
+    )
+
+    @property
+    def price(self):
+        return ''
+
+    class Meta:
+        verbose_name = _("Order")
+        verbose_name_plural = _("Orders")
+
+    def __str__(self):
+        return f'{self.user} - {self.price}' \
+               f' {SiteSettings.objects.first().currency_symbol}'
+
+
+class OrderItem(models.Model):
+    """
+    Order item
+    """
+    order = models.ForeignKey(
+        Order,
+        on_delete=models.CASCADE,
+        related_name='items',
+        verbose_name=_('Order'),
+    )
+    food = models.ForeignKey(
+        Food,
+        on_delete=models.PROTECT,
+        verbose_name=_("Food"),
+        related_name='order_item'
+    )
+    food_two = models.ForeignKey(
+        Food,
+        on_delete=models.PROTECT,
+        verbose_name=_("Food two"),
+        null=True,
+        blank=True,
+        related_name='half_order_item'
+    )
+    addon = models.ManyToManyField(
+        Addon,
+        verbose_name=_('Addon'),
+        related_name='order_items',
+        blank=True,
+    )
+    size = models.ForeignKey(
+        Size,
+        on_delete=models.PROTECT,
+        verbose_name=_("Size"),
+    )
+    price = models.FloatField(
+        verbose_name=_("Price"),
+    )
+
+    class Meta:
+        verbose_name = _("Order item")
+        verbose_name_plural = _("Order items")
+
+    def __str__(self):
+        return f'{self.order} {self.food} - {self.price}' \
+               f' {SiteSettings.objects.first().currency_symbol}'
