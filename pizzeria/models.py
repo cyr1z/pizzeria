@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django_quill.fields import QuillField
 from autoslug import AutoSlugField
 from django.utils.translation import ugettext_lazy as _
@@ -455,6 +456,10 @@ class Order(models.Model):
         DELIVERY = 3, _('Delivery')
         GIVEN = 4, _('Given')
 
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('created at'),
+    )
     status = models.PositiveIntegerField(
         choices=Status.choices,
         default=Status.CREATED,
@@ -482,8 +487,7 @@ class Order(models.Model):
         verbose_name_plural = _("Orders")
 
     def __str__(self):
-        return f'{self.user} - {self.price}' \
-               f' {SiteSettings.objects.first().currency_symbol}'
+        return f'{self.user} - {self.created_at}'
 
 
 class OrderItem(models.Model):

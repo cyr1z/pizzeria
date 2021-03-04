@@ -109,7 +109,7 @@ class SizeAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'price', 'status', 'finished', 'paid')
+    list_display = ('user', 'price', 'status', 'created_at', 'finished', 'paid')
     search_fields = ("user",)
 
 
