@@ -127,6 +127,18 @@ class SiteSettings(SingletonModel):
         verbose_name=_('Github Link'),
     )
 
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super(SingletonModel, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        pass
+
+    @classmethod
+    def load(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
     class Meta:
         verbose_name = _('Site Settings')
         verbose_name_plural = _('Site Settings')
@@ -286,9 +298,14 @@ class Food(models.Model):
         default=True,
         verbose_name=_('Is active'),
     )
-    is_vegeterian = models.BooleanField(
+    is_vegetarian = models.BooleanField(
         default=False,
-        verbose_name=_('Is vegeterian'),
+        verbose_name=_('Is vegetarian'),
+    )
+    size = models.ManyToManyField(
+        'Size',
+        through='Price',
+        related_name='foods'
     )
 
     @property
@@ -306,3 +323,107 @@ class Food(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+class Size(models.Model):
+    """
+    Size
+    """
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='sizes',
+        verbose_name=_('Category'),
+    )
+    food = models.ManyToManyField(
+        Food,
+        through='Price',
+        related_name='sizes',
+        verbose_name=_('Food'),
+    )
+    value = models.PositiveIntegerField(
+        verbose_name=_('Value'),
+    )
+
+    class Meta:
+        verbose_name = _("Size")
+        verbose_name_plural = _("Sizes")
+
+    def __str__(self):
+        return f'{self.value} {self.category.size_unit} ' \
+               f'({self.category.title})'
+
+
+class Price(models.Model):
+    """
+    Price
+    """
+    food = models.ForeignKey(
+        Food,
+        on_delete=models.CASCADE,
+        verbose_name=_("Food"),
+    )
+    size = models.ForeignKey(
+        Size,
+        on_delete=models.CASCADE,
+        verbose_name=_("Size"),
+    )
+    value = models.FloatField(
+        verbose_name=_("Value"),
+    )
+
+    class Meta:
+        ordering = ['value']
+        verbose_name = _("Price")
+        verbose_name_plural = _("Prices")
+
+    def __str__(self):
+        return f'"{self.food.title}" - {self.size.value} ' \
+               f'{self.size.category.size_unit}: {self.value} ₴'
+
+
+class Addon(models.Model):
+    """
+    Addon
+    """
+    title = models.CharField(
+        max_length=120,
+        verbose_name=_('Title'),
+    )
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name='addons',
+        verbose_name=_('Category'),
+    )
+    description = models.TextField(
+        max_length=100000,
+        null=True,
+        blank=True,
+        verbose_name=_('Description'),
+    )
+    image = models.ImageField(
+        verbose_name=_('Image'),
+        upload_to='categories_images/',
+        default='static/food.png',
+        null=True,
+        blank=True
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_('Is active'),
+    )
+    is_vegetarian = models.BooleanField(
+        default=False,
+        verbose_name=_('Is vegetarian'),
+    )
+    price = models.FloatField(
+        verbose_name=_("Price"),
+    )
+
+    class Meta:
+        verbose_name = _("Addon")
+        verbose_name_plural = _("Addons")
+
+    def __str__(self):
+        return f'{self.title} - {self.price}₴'

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'pizzeria.apps.PizzeriaConfig',
     'django_quill',
     'phonenumber_field',
+    'crispy_forms',
 
 ]
 
