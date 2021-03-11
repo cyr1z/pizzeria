@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django_quill',
     'phonenumber_field',
     'crispy_forms',
+    'django_filters',
 
 ]
 
@@ -159,8 +160,6 @@ MODELTRANSLATION_TRANSLATION_FILES = (
     'pizzeria.translations',
 )
 
-
-# gettext = lambda s: s
 
 LANGUAGES = (
     ('uk', _('Ukrainian')),

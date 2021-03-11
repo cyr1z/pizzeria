@@ -20,6 +20,7 @@ Unidecode = "==1.2.0"
 pillow = "*"
 django-modeltranslation = "*"
 ipython = "*"
+django-filter = "*"
 
 [dev-packages]
 selenium = "*"
