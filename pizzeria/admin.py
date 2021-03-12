@@ -65,7 +65,7 @@ class PizzaUserAdmin(admin.ModelAdmin):
 
 
 @admin.register(SiteSettings)
-class SiteSettingsAdmin(SingletonModelAdmin):
+class SiteSettingsAdmin(TranslationAdmin):
     list_display = (
         'site_name',
         'contact_viber',
@@ -74,6 +74,9 @@ class SiteSettingsAdmin(SingletonModelAdmin):
         'phone_number',
         'phone_number_two',
     )
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(Category)

@@ -1,5 +1,4 @@
 from django.urls import path
-
 from pizzeria.views import MainPage
 
 urlpatterns = [

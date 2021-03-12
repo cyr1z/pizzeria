@@ -11,24 +11,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from unidecode import unidecode
 
 
-class SingletonModel(models.Model):
-    class Meta:
-        abstract = True
-
-    def save(self, *args, **kwargs):
-        self.pk = 1
-        super(SingletonModel, self).save(*args, **kwargs)
-
-    def delete(self, *args, **kwargs):
-        pass
-
-    @classmethod
-    def load(cls):
-        obj, created = cls.objects.get_or_create(pk=1)
-        return obj
-
-
-class SiteSettings(SingletonModel):
+class SiteSettings(models.Model):
     site_name = models.CharField(
         max_length=40,
         default='pizza',
@@ -76,20 +59,23 @@ class SiteSettings(SingletonModel):
         blank=True,
         verbose_name=_('Map coordinates'),
     )
-    contact_about_text_en = QuillField(
+
+    address = models.CharField(
+        max_length=255,
         null=True,
         blank=True,
-        verbose_name=_('Contact about text English'),
+        verbose_name=_('address'),
     )
-    contact_about_text_ru = QuillField(
+    map_link = models.CharField(
+        max_length=255,
         null=True,
         blank=True,
-        verbose_name=_('Contact about text Russian'),
+        verbose_name=_('map link'),
     )
-    contact_about_text_uk = QuillField(
+    contact_about_text = QuillField(
         null=True,
         blank=True,
-        verbose_name=_('Contact about text Ukrainian'),
+        verbose_name=_('Contact about text'),
     )
     facebook_link = models.CharField(
         max_length=255,
@@ -137,7 +123,7 @@ class SiteSettings(SingletonModel):
 
     def save(self, *args, **kwargs):
         self.pk = 1
-        super(SingletonModel, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         pass

@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import TemplateView
+from django.utils.translation import gettext_lazy as _
+from pizzeria.models import SiteSettings
 
 
 class MainPage(TemplateView):
@@ -10,29 +12,31 @@ class MainPage(TemplateView):
     """
     template_name = 'index.html'
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data(object_list=object_list, **kwargs)
-    #     # add latest post
-    #     latest_post = Post.objects.order_by('-published_at').filter(is_published=True).first()
-    #     if latest_post:
-    #         context.update({'latest_post': latest_post})
-    #     # add 3 next latest posts
-    #     next_three_posts = Post.objects.filter(is_published=True).order_by('-published_at')[1:4]
-    #     if next_three_posts:
-    #         context.update({'next_three_posts': next_three_posts})
-    #     # add pinned top post
-    #     pinned_on_main_top_post = Post.objects.filter(
-    #         pinned_on_main_top=True).first()
-    #     if pinned_on_main_top_post:
-    #         context.update({
-    #             'pinned_on_main_top_post': pinned_on_main_top_post
-    #         })
-    #     # add pinned bottom post
-    #     pinned_on_main_bottom_post = Post.objects.filter(
-    #         pinned_on_main_bottom=True).first()
-    #     if pinned_on_main_bottom_post:
-    #         context.update(
-    #             {'pinned_on_main_bottom_post': pinned_on_main_bottom_post}
-    #         )
-    #
-    #     return context
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        # add site_name
+        site_name = SiteSettings.objects.first().site_name
+        if site_name:
+            context.update({'site_name': site_name})
+        # add contact_email
+        contact_email = SiteSettings.objects.first().contact_email
+        if contact_email:
+            context.update({'contact_email': contact_email})
+        # add phone_number
+        phone_number = SiteSettings.objects.first().phone_number
+        if site_name:
+            context.update({'phone_number': phone_number})
+        # add map_coordinates
+        map_coordinates = SiteSettings.objects.first().map_coordinates
+        if map_coordinates:
+            context.update({'map_coordinates': map_coordinates})
+        # add map_link
+        map_link = SiteSettings.objects.first().map_link
+        if map_link:
+            context.update({'map_link': map_link})
+        # add address
+        address = SiteSettings.objects.first().address
+        if address:
+            context.update({'address': address})
+
+        return context

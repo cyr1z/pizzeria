@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from pizzeria.models import Category, Food, Addon
+from pizzeria.models import Category, Food, Addon, SiteSettings
 
 
 @register(Category)
@@ -15,3 +15,8 @@ class FoodTranslationOptions(TranslationOptions):
 @register(Addon)
 class AddonTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
+
+
+@register(SiteSettings)
+class SiteSettingsTranslationOptions(TranslationOptions):
+    fields = ('contact_about_text', 'address')
