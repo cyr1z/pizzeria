@@ -120,6 +120,59 @@ class SiteSettings(models.Model):
         unique=True,
         verbose_name=_('Currency symbol'),
     )
+    welcome_title = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('welcome title'),
+    )
+    welcome_text = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('welcome text'),
+    )
+    working_time_text = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True,
+        verbose_name=_('Working time text'),
+    )
+    saturday_work_start = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('Saturday work start'),
+    )
+    saturday_work_finish = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('Saturday work finish'),
+    )
+    sunday_work_start = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('Sunday work start'),
+    )
+    sunday_work_finish = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('Sunday work finish'),
+    )
+    weekday_work_start = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('weekday work start'),
+    )
+    weekday_work_finish = models.CharField(
+        max_length=10,
+        null=True,
+        blank=True,
+        verbose_name=_('weekday work finish'),
+    )
 
     def save(self, *args, **kwargs):
         self.pk = 1
@@ -295,6 +348,10 @@ class Food(models.Model):
     is_vegetarian = models.BooleanField(
         default=False,
         verbose_name=_('Is vegetarian'),
+    )
+    is_spicy = models.BooleanField(
+        default=False,
+        verbose_name=_('Is spicy'),
     )
     size = models.ManyToManyField(
         'Size',
