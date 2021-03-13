@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 from pizzeria.models import SiteSettings, PizzaUser, Category, Food, Price, \
-    Size, Addon, Order, OrderItem
+    Size, Addon, Order, OrderItem, MainPageSlide
 
 from modeltranslation.admin import TranslationAdmin
 from django.utils.translation import ugettext_lazy as _
@@ -91,6 +91,13 @@ class FoodAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'is_active', 'is_vegetarian')
     list_editable = ("is_active",)
     search_fields = ("title",)
+
+
+@admin.register(MainPageSlide)
+class MainPageSlideAdmin(TranslationAdmin):
+    list_display = ('title', 'food', 'is_active',)
+    list_editable = ("is_active",)
+    search_fields = ("title", "food")
 
 
 @admin.register(Addon)

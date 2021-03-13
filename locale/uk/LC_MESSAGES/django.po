@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 11:11+0200\n"
+"POT-Creation-Date: 2021-03-13 12:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,6 +172,7 @@ msgid "Users"
 msgstr "Користувачі"
 
 #: pizzeria/models.py:219 pizzeria/models.py:270 pizzeria/models.py:386
+#: pizzeria/models.py:540
 msgid "Title"
 msgstr "Назва"
 
@@ -184,14 +185,17 @@ msgid "Size unit"
 msgstr "Одиниця вимірювання"
 
 #: pizzeria/models.py:233 pizzeria/models.py:282 pizzeria/models.py:398
+#: pizzeria/models.py:546
 msgid "Description"
 msgstr "Опис"
 
 #: pizzeria/models.py:236 pizzeria/models.py:285 pizzeria/models.py:401
+#: pizzeria/models.py:549
 msgid "Image"
 msgstr "Зображення"
 
 #: pizzeria/models.py:244 pizzeria/models.py:293 pizzeria/models.py:409
+#: pizzeria/models.py:557
 msgid "Is active"
 msgstr "Активний"
 
@@ -209,7 +213,7 @@ msgid "Is vegetarian"
 msgstr "Вегетаріанська"
 
 #: pizzeria/models.py:315 pizzeria/models.py:336 pizzeria/models.py:358
-#: pizzeria/models.py:492
+#: pizzeria/models.py:492 pizzeria/models.py:535
 msgid "Food"
 msgstr "Страва"
 
@@ -305,6 +309,14 @@ msgstr "Одиниця замовлення"
 msgid "Order items"
 msgstr "Одиниці замовлення"
 
+#: pizzeria/models.py:564
+msgid "Slide"
+msgstr "Слайд"
+
+#: pizzeria/models.py:565
+msgid "Slides"
+msgstr "Слайди"
+
 #: pizzeria/templates/index.html:214
 msgid "Home"
 msgstr "Головна"
@@ -320,3 +332,7 @@ msgstr "Бронювання"
 #: pizzeria/templates/index.html:243
 msgid "Contact"
 msgstr "Контакти"
+
+#: pizzeria/templates/index.html:291
+msgid "read more"
+msgstr "детальніше"

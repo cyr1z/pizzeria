@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import TemplateView
 from django.utils.translation import gettext_lazy as _
-from pizzeria.models import SiteSettings
+from pizzeria.models import SiteSettings, MainPageSlide
 
 
 class MainPage(TemplateView):
@@ -38,5 +38,9 @@ class MainPage(TemplateView):
         address = SiteSettings.objects.first().address
         if address:
             context.update({'address': address})
+        # add slides
+        slides = MainPageSlide.objects.all()
+        if slides:
+            context.update({'slides': slides})
 
         return context

@@ -522,3 +522,47 @@ class OrderItem(models.Model):
     def __str__(self):
         return f'{self.order} {self.food} - {self.price}' \
                f' {SiteSettings.objects.first().currency_symbol}'
+
+
+class MainPageSlide(models.Model):
+    """
+    Slide for main page slider
+    """
+
+    food = models.ForeignKey(
+        Food,
+        on_delete=models.PROTECT,
+        verbose_name=_("Food"),
+        related_name='slides'
+    )
+    title = models.CharField(
+        max_length=120,
+        verbose_name=_('Title'),
+    )
+    description = models.TextField(
+        max_length=100000,
+        null=True,
+        blank=True,
+        verbose_name=_('Description'),
+    )
+    image = models.ImageField(
+        verbose_name=_('Image'),
+        upload_to='slider_images/',
+        default='static/food.png',
+        null=True,
+        blank=True
+    )
+    is_active = models.BooleanField(
+        default=True,
+        verbose_name=_('Is active'),
+    )
+
+    # def get_read_more_url(self):
+    #     return reverse('food_detail', kwargs={'pk': self.food.pk})
+
+    class Meta:
+        verbose_name = _("Slide")
+        verbose_name_plural = _("Slides")
+
+    def __str__(self):
+        return f'{self.title} {self.food}'

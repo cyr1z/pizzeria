@@ -251,11 +251,14 @@
     </header> 
     
     <div class="main-content">
+    {% if slides %}
+
 
     <section class="full-height-slider pagination-bottom-lx-30">
        <div class="swiper-container full-h" data-mode="horizontal" data-autoplay="0" data-effect="slide" data-slides-per-view="1" data-loop="0" data-speed="800">
            <div class="parallax-bg bg ready data-jarallax" data-jarallax="5" style="background-image: url(/static/img/home-4/home4_slider_img_1.jpg)" data-swiper-parallax="-23%"></div>
             <div class="swiper-wrapper">
+                {% for slide in slides %}
                 <div class="swiper-slide">
                    <div class="vertical-align full mobile-rel-block">
                        <div class="container">
@@ -266,26 +269,28 @@
           								<div class="row vertical-wrap">
           									<div class="col-lg-4 col-md-5 col-xs-12">
           										<div class="left-slider-item-img" data-swiper-parallax="-450" data-swiper-parallax-duration="1000">
-          											 <img src="/static/img/home-4/main_slider_img-1.png" alt="" class="full-img">
+          											 <img src="{{ slide.image.url }}" alt="{{ slide.title }}" class="full-img">
           										</div>
           									</div>
           									<div class="col-lg-8 col-md-7 col-xs-12">
-          									    <div class="custome-padd-top-130"> 
+          									    <div class="custome-padd-top-130">
           										     <div class="main-caption text-center color-type-2">
-          											   <div class="title h1" data-swiper-parallax="-300" data-swiper-parallax-duration="1000">The perfect pizza taste</div>
+          											   <div class="title h1" data-swiper-parallax="-300" data-swiper-parallax-duration="1000">{{ slide.title }}</div>
           											   <div class="empty-sm-20 empty-xs-20"></div>
           												  <img src="/static/img/title_sepp_3.png" alt="" class="color-overlay" data-swiper-parallax="-400" data-swiper-parallax-duration="1000">
           												   <div class="empty-sm-25 empty-xs-25"></div>
           												   <div class="row">
-          													 <div class="col-md-8 col-md-offset-2">  
+          													 <div class="col-md-8 col-md-offset-2">
           													   <div class="simple-text md" data-swiper-parallax="-450" data-swiper-parallax-duration="1000">
-          														   <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  nulla pariatur anim id est laborum sunt in dolor in reprehenderit in.</p>
+                                                                   <p style="white-space: pre-wrap; ">{{ slide.description }}</p>
           													   </div>
-          													  </div>   
+          													  </div>
           												   </div>
           											   <div class="empty-sm-40 empty-xs-35"></div>
           											   <div class="button-wrap" data-swiper-parallax="-500" data-swiper-parallax-duration="1000">
-          												   <a href="#" class="page-button button-style-1 type-2"><span class="txt">read more</span><i></i></a>
+          												   <a href="#" class="page-button button-style-1 type-2"><span class="txt">{%  trans 'read more' %}</span><i></i></a>
+{#                                                           <a href="{{ slide.get_read_more_url }}" class="page-button button-style-1 type-2"><span class="txt">{%  trans 'read more' %}</span><i></i></a>#}
+
           											   </div>
           											</div>
           										</div>
@@ -297,52 +302,13 @@
                        </div>
                    </div>
                 </div>
-                <div class="swiper-slide">
-                  
-                   <div class="vertical-align full mobile-rel-block">
-                       <div class="container">
-                         <div class="row">
-                         	<div class="col-lg-10 col-lg-offset-1 col-md-12">
-                         		<div class="empty-lg-50 empty-md-50 empty-sm-0 empty-xs-0"></div>
-								<div class="simple-item-style-3 simple-item">
-								<div class="row vertical-wrap">
-									<div class="col-lg-4 col-md-5 col-xs-12">
-										<div class="left-slider-item-img" data-swiper-parallax="-450" data-swiper-parallax-duration="1000">
-											 <img src="/static/img/home-4/main_slider_img-2.png" alt="" class="full-img">
-										</div>
-									</div>
-									<div class="col-lg-8 col-md-7 col-xs-12">
-									    <div class="custome-padd-top-130"> 
-										     <div class="main-caption text-center color-type-2">
-											   <div class="title h1" data-swiper-parallax="-300" data-swiper-parallax-duration="1000">The perfect pizza taste</div>
-											   <div class="empty-sm-20 empty-xs-20"></div>
-												  <img src="/static/img/title_sepp_3.png" alt="" class="color-overlay" data-swiper-parallax="-400" data-swiper-parallax-duration="1000">
-												   <div class="empty-sm-25 empty-xs-25"></div>
-												   <div class="row">
-													 <div class="col-md-8 col-md-offset-2">  
-													   <div class="simple-text md" data-swiper-parallax="-450" data-swiper-parallax-duration="1000">
-														   <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in  nulla pariatur anim id est laborum sunt in dolor in reprehenderit in.</p>
-													   </div>
-													  </div>   
-												   </div>
-											   <div class="empty-sm-40 empty-xs-35"></div>
-											   <div class="button-wrap" data-swiper-parallax="-500" data-swiper-parallax-duration="1000">
-												   <a href="#" class="page-button button-style-1 type-2"><span class="txt">read more</span><i></i></a>
-											   </div>
-											</div>
-										</div>
-									 </div>
-								  </div>
-								  </div>
-                         	</div>
-                         </div>
-                       </div>
-                   </div>
-                </div>
+                {% endfor %}
+
            </div>
            <div class="pagination swiper-pagination-1"></div>
          </div>  
     </section>
+    {% endif %}
     
     <section class="section">
         <div class="bg left contain lgx-hide" style="background-image: url(/static/img/home-4/about_left_img.jpg)"></div>
