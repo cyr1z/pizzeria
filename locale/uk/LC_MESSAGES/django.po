@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 11:45+0200\n"
+"POT-Creation-Date: 2021-03-14 14:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,6 +356,10 @@ msgstr "Слайд"
 #: pizzeria/models.py:622
 msgid "Slides"
 msgstr "Слайди"
+
+#: pizzeria/templates/copyright.html:6
+msgid "All Rights Reserved."
+msgstr "Усі права захищенні"
 
 #: pizzeria/templates/index.html:214
 msgid "Home"

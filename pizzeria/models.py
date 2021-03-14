@@ -274,10 +274,14 @@ class Category(models.Model):
     size_name = models.CharField(
         max_length=120,
         verbose_name=_('Size name'),
+        null=True,
+        blank=True,
     )
     size_unit = models.CharField(
         max_length=30,
         verbose_name=_('Size unit'),
+        null=True,
+        blank=True,
     )
     description = models.TextField(
         max_length=100000,
@@ -392,7 +396,7 @@ class Size(models.Model):
         related_name='sizes',
         verbose_name=_('Food'),
     )
-    value = models.PositiveIntegerField(
+    value = models.FloatField(
         verbose_name=_('Value'),
     )
 

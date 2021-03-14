@@ -51,3 +51,8 @@ register = template.Library()
 @register.inclusion_tag('lang_selector.html')
 def show_lang_selector():
     pass
+
+
+@register.inclusion_tag('copyright.html')
+def show_copyright():
+    return {'site_name': SiteSettings.objects.first().site_name}

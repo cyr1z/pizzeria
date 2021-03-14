@@ -7,19 +7,6 @@ from modeltranslation.admin import TranslationAdmin
 from django.utils.translation import ugettext_lazy as _
 
 
-class SingletonModelAdmin(admin.ModelAdmin):
-    """
-    Prevents Django admin users deleting the singleton or adding extra rows.
-    """
-    actions = None  # Removes the default delete action.
-
-    def has_delete_permission(self, request, obj=None):
-        return False
-
-    def has_add_permission(self, request):
-        return False
-
-
 @admin.register(PizzaUser)
 class PizzaUserAdmin(admin.ModelAdmin):
     list_display = (
@@ -86,11 +73,19 @@ class CategoryAdmin(TranslationAdmin):
     search_fields = ("title",)
 
 
+class PricesInline(admin.TabularInline):
+    model = Size.food.through
+    extra = 0
+
+
 @admin.register(Food)
 class FoodAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'is_active', 'is_vegetarian')
     list_editable = ("is_active",)
     search_fields = ("title",)
+    inlines = (
+        PricesInline,
+    )
 
 
 @admin.register(MainPageSlide)

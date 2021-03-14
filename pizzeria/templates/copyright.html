@@ -1,0 +1,9 @@
+{% load i18n %}
+{% now "Y" as current_year %}
+<div class="copyright text-center">
+    <div class="empty-sm-20 empty-xs-20"></div>
+    <div class="container">
+        <span>© {{ current_year }} {{ site_name }}. {% trans 'All Rights Reserved.' %}</span>
+    </div>
+    <div class="empty-sm-20 empty-xs-20"></div>
+</div>
