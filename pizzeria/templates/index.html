@@ -76,14 +76,14 @@
     <div class="preloader">
      <div class="sk-cube-grid selected">
       <div class="sk-cube sk-cube1"></div>
-      <div class="sk-cube sk-cube2"></div>
-      <div class="sk-cube sk-cube3"></div>
-      <div class="sk-cube sk-cube4"></div>
-      <div class="sk-cube sk-cube5"></div>
-      <div class="sk-cube sk-cube6"></div>
-      <div class="sk-cube sk-cube7"></div>
-      <div class="sk-cube sk-cube8"></div>
-      <div class="sk-cube sk-cube9"></div>
+{#      <div class="sk-cube sk-cube2"></div>#}
+{#      <div class="sk-cube sk-cube3"></div>#}
+{#      <div class="sk-cube sk-cube4"></div>#}
+{#      <div class="sk-cube sk-cube5"></div>#}
+{#      <div class="sk-cube sk-cube6"></div>#}
+{#      <div class="sk-cube sk-cube7"></div>#}
+{#      <div class="sk-cube sk-cube8"></div>#}
+{#      <div class="sk-cube sk-cube9"></div>#}
     </div>
    </div>
     
@@ -252,8 +252,6 @@
     
     <div class="main-content">
     {% if slides %}
-
-
     <section class="full-height-slider pagination-bottom-lx-30">
        <div class="swiper-container full-h" data-mode="horizontal" data-autoplay="0" data-effect="slide" data-slides-per-view="1" data-loop="0" data-speed="800">
            <div class="parallax-bg bg ready data-jarallax" data-jarallax="5" style="background-image: url(/static/img/home-4/home4_slider_img_1.jpg)" data-swiper-parallax="-23%"></div>
@@ -309,7 +307,8 @@
          </div>  
     </section>
     {% endif %}
-    
+    {% if welcome_text %}
+
     <section class="section">
         <div class="bg left contain lgx-hide" style="background-image: url(/static/img/home-4/about_left_img.jpg)"></div>
         <div class="bg right contain lgx-hide" style="background-image: url(/static/img/home-4/about_right_img.jpg)"></div>
@@ -318,16 +317,21 @@
         		<div class="row item-animation scroll-type-1">
         			<div class="col-md-6 col-md-offset-3">
         				<div class="main-caption text-center color-2">
-						   <h2 class="h2 title">Welcome!</h2>
+						   <h2 class="h2 title">
+                               {% if welcome_title %}
+                               {{ welcome_title }}
+                               {% else %}
+                               {% trans 'Welcome!' %}
+                               {% endif %}
+
+                           </h2>
 						   <div class="empty-sm-20 empty-xs-20"></div> 
 						   <img src="/static/img/title_sepp_3.png" alt="" class="color-overlay">
 						   <div class="empty-sm-15 empty-xs-15"></div>   
-						   <div class="simple-text md">
-							   <p><b>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</b></p>
-						   </div>
+
 						   <div class="empty-sm-30 empty-xs-30"></div>
 						   <div class="simple-text">
-						   	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse dolore eu fugiat nulla pariatur. Sint occaecat cupidatat non proident, culpa qui officia deserunt mollit anim id est laborum ullamco. </p>
+						   	<p>{{ welcome_text.html|safe }}</p>
 						   </div>
 						   <div class="empty-lg-70 empty-md-60 empty-sm-60 empty-xs-40"></div>
 						   <div class="row">
@@ -395,7 +399,7 @@
 											<rect x="220.313" y="164.063" width="9.375" height="14.063"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
 										 </svg>
 										<div class="empty-sm-15 empty-xs-15"></div>
-										<h5 class="h5 caption color-1">Large selection of ingredients</h5>
+										<h5 class="h5 caption color-1">{%  trans 'Large selection of ingredients' %}</h5>
 										<div class="empty-sm-30 empty-xs-30"></div>
 									</div>
 						   		</div>
@@ -438,7 +442,7 @@
 													 M407.5,344c-4.687,0-8.5-3.813-8.5-8.5s3.813-8.5,8.5-8.5s8.5,3.813,8.5,8.5S412.187,344,407.5,344z"/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
 										  </svg>
 										<div class="empty-sm-15 empty-xs-15"></div>  
-										<h5 class="h5 caption color-1">Quick pizza delivery</h5>
+										<h5 class="h5 caption color-1">{%  trans 'Quick pizza delivery' %}</h5>
 										<div class="empty-sm-30 empty-xs-30"></div>
 									</div>
 							    </div>
@@ -469,7 +473,7 @@
 										c1.086,4.084,4.775,6.781,8.81,6.781c0.776,0,1.564-0.1,2.348-0.308C97.549,89.814,100.447,84.818,99.153,79.95z"/></g></g><g><g><circle cx="389.159" cy="265.726" r="9.121"/></g></g><g><g><circle cx="338.091" cy="293.091" r="9.121"/></g></g><g><g><circle cx="281.538" cy="262.078" r="9.121"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
 										</svg>
 										<div class="empty-sm-15 empty-xs-15"></div>
-										<h5 class="h5 caption color-1">Fresh fruit juices</h5>
+										<h5 class="h5 caption color-1">{%  trans 'Fresh fruit juices' %}</h5>
 										<div class="empty-sm-30 empty-xs-30"></div>
 									</div>
 							    </div>
@@ -480,7 +484,8 @@
         	</div>
         <div class="empty-lg-100 empty-md-70 empty-sm-30 empty-xs-30"></div>
 	</section>
-   
+
+    {% endif %}
     <section class="section">
     	<div class="bg layer ready data-jarallax" data-jarallax="5" style="background-image: url(/static/img/home-4/section_home3_bg_1.jpg)"></div>
         <div class="empty-lg-130 empty-md-100 empty-sm-60 empty-xs-60"></div>
@@ -1383,250 +1388,250 @@
 		   </div>
 		<div class="empty-lg-70 empty-md-40 empty-sm-30 empty-xs-30"></div>    
 	</section>
-   
-    <section class="section">
-    	<div class="bg layer ready data-jarallax" data-jarallax="5" style="background-image: url(/static/img/home-4/section_home3_bg_3.jpg)"></div>
-        <div class="empty-lg-130 empty-md-100 empty-sm-60 empty-xs-60"></div>
-        	<div class="container">
-        		<div class="row item-animation scroll-type-1">
-        			<div class="col-md-6 col-md-offset-3">
-        				<div class="main-caption text-center color-type-1">
-						   <h2 class="h2 title">Exclusive offers &amp; discounts</h2>
-						   <div class="empty-sm-20 empty-xs-20"></div> 
-						   <img src="/static/img/title_sepp_4.png" alt="">
-						   <div class="empty-sm-15 empty-xs-15"></div>   
-						   <div class="simple-text md">
-							   <p><b>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</b></p>
-						   </div>
-						   <div class="empty-lg-70 empty-md-60 empty-sm-60 empty-xs-40"></div>
-						</div>
-        			</div>
-        		</div>
-        		<div class="swiper-container pagination-bottom item-animation scroll-type-1" data-mode="horizontal" data-autoplay="0" data-effect="slide" data-slides-per-view="1" data-loop="0" data-speed="800" data-space="30">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-              <div class="row">
-								<div class="col-md-6">
-									<div class="menu-item menu-item-4">
-									  <div class="image hover-zoom mob-hover">
-										  <img src="/static/img/home-4/offers_img_1-1.jpg" alt="">
-										  <div class="vertical-align full menu-button color-type-1">
-											<div class="col-md-10 col-md-offset-1">
-												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>
-												 <div class="empty-sm-30 empty-xs-20"></div> 
-												 <div class="simple-text opacity">
-													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-												 </div>
-												 <div class="empty-sm-50 empty-xs-30"></div> 
-												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	
-											</div>
-										  </div>
-									  </div>
-									</div>
-                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>
-								</div>
-								<div class="col-md-6">
-									 <div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_2-1.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-									<div class="empty-sm-30 empty-xs-30"></div>
-									<div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_3-1.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-              <div class="row">
-								<div class="col-md-6">
-									<div class="menu-item menu-item-4">
-									  <div class="image hover-zoom mob-hover">
-										  <img src="/static/img/home-4/offers_img_1-2.jpg" alt="">
-										  <div class="vertical-align full menu-button color-type-1">
-											<div class="col-md-10 col-md-offset-1">
-												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>
-												 <div class="empty-sm-30 empty-xs-20"></div> 
-												 <div class="simple-text">
-													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-												 </div>
-												 <div class="empty-sm-50 empty-xs-30"></div> 
-												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	
-											</div>
-										  </div>
-									  </div>
-									</div>
-                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>
-								</div>
-								<div class="col-md-6">
-									 <div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_2-2.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-									<div class="empty-sm-30 empty-xs-30"></div>
-									<div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_3-2.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="swiper-slide">
-              <div class="row">
-								<div class="col-md-6">
-									<div class="menu-item menu-item-4">
-									  <div class="image hover-zoom mob-hover">
-										  <img src="/static/img/home-4/offers_img_1-3.jpg" alt="">
-										  <div class="vertical-align full menu-button color-type-1">
-											<div class="col-md-10 col-md-offset-1">
-												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>
-												 <div class="empty-sm-30 empty-xs-30"></div> 
-												 <div class="simple-text">
-													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-												 </div>
-												 <div class="empty-sm-50 empty-xs-30"></div> 
-												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	
-											</div>
-										  </div>
-									  </div>
-									</div>
-                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>
-								</div>
-								<div class="col-md-6">
-									 <div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_2-3.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-									<div class="empty-sm-30 empty-xs-30"></div>
-									<div class="menu-item menu-item-4 item-type-2">
-									  <div class="image hover-zoom">
-										  <img src="/static/img/home-4/offers_img_3-3.jpg" alt="">
-										  <div class="vertical-align full menu-button">
-											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-										  </div>
-									  </div>
-									  <div class="text">
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>
-										  <div class="empty-sm-10 empty-xs-10"></div>
-										  <div class="simple-text">
-											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>
-										  </div>
-										  <div class="empty-sm-20 empty-xs-20"></div>
-										  <div class="simple-text">
-											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>
-										  </div>
-										  <div class="empty-sm-25 empty-xs-25"></div>
-										  <div class="menu-price fw-400 title main-col">$6.25</div>
-                      <div class="empty-sm-0 empty-xs-20"></div>
-									  </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="empty-sm-50 empty-xs-50"></div>  
-					<div class="pagination swiper-pagination-1"></div>
-				</div>
-		    </div>
-		  <div class="empty-lg-100 empty-md-80 empty-sm-10 empty-xs-10"></div>  
-	</section>
+{#   #}
+{#    <section class="section">#}
+{#    	<div class="bg layer ready data-jarallax" data-jarallax="5" style="background-image: url(/static/img/home-4/section_home3_bg_3.jpg)"></div>#}
+{#        <div class="empty-lg-130 empty-md-100 empty-sm-60 empty-xs-60"></div>#}
+{#        	<div class="container">#}
+{#        		<div class="row item-animation scroll-type-1">#}
+{#        			<div class="col-md-6 col-md-offset-3">#}
+{#        				<div class="main-caption text-center color-type-1">#}
+{#						   <h2 class="h2 title">Exclusive offers &amp; discounts</h2>#}
+{#						   <div class="empty-sm-20 empty-xs-20"></div> #}
+{#						   <img src="/static/img/title_sepp_4.png" alt="">#}
+{#						   <div class="empty-sm-15 empty-xs-15"></div>   #}
+{#						   <div class="simple-text md">#}
+{#							   <p><b>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</b></p>#}
+{#						   </div>#}
+{#						   <div class="empty-lg-70 empty-md-60 empty-sm-60 empty-xs-40"></div>#}
+{#						</div>#}
+{#        			</div>#}
+{#        		</div>#}
+{#        		<div class="swiper-container pagination-bottom item-animation scroll-type-1" data-mode="horizontal" data-autoplay="0" data-effect="slide" data-slides-per-view="1" data-loop="0" data-speed="800" data-space="30">#}
+{#            <div class="swiper-wrapper">#}
+{#              <div class="swiper-slide">#}
+{#              <div class="row">#}
+{#								<div class="col-md-6">#}
+{#									<div class="menu-item menu-item-4">#}
+{#									  <div class="image hover-zoom mob-hover">#}
+{#										  <img src="/static/img/home-4/offers_img_1-1.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button color-type-1">#}
+{#											<div class="col-md-10 col-md-offset-1">#}
+{#												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>#}
+{#												 <div class="empty-sm-30 empty-xs-20"></div> #}
+{#												 <div class="simple-text opacity">#}
+{#													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
+{#												 </div>#}
+{#												 <div class="empty-sm-50 empty-xs-30"></div> #}
+{#												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	#}
+{#											</div>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									</div>#}
+{#                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>#}
+{#								</div>#}
+{#								<div class="col-md-6">#}
+{#									 <div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_2-1.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#									<div class="empty-sm-30 empty-xs-30"></div>#}
+{#									<div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_3-1.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="swiper-slide">#}
+{#              <div class="row">#}
+{#								<div class="col-md-6">#}
+{#									<div class="menu-item menu-item-4">#}
+{#									  <div class="image hover-zoom mob-hover">#}
+{#										  <img src="/static/img/home-4/offers_img_1-2.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button color-type-1">#}
+{#											<div class="col-md-10 col-md-offset-1">#}
+{#												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>#}
+{#												 <div class="empty-sm-30 empty-xs-20"></div> #}
+{#												 <div class="simple-text">#}
+{#													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
+{#												 </div>#}
+{#												 <div class="empty-sm-50 empty-xs-30"></div> #}
+{#												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	#}
+{#											</div>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									</div>#}
+{#                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>#}
+{#								</div>#}
+{#								<div class="col-md-6">#}
+{#									 <div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_2-2.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#									<div class="empty-sm-30 empty-xs-30"></div>#}
+{#									<div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_3-2.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="swiper-slide">#}
+{#              <div class="row">#}
+{#								<div class="col-md-6">#}
+{#									<div class="menu-item menu-item-4">#}
+{#									  <div class="image hover-zoom mob-hover">#}
+{#										  <img src="/static/img/home-4/offers_img_1-3.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button color-type-1">#}
+{#											<div class="col-md-10 col-md-offset-1">#}
+{#												 <div class="title h3">Get 40% discount on Pasta and Mains every weekend</div>#}
+{#												 <div class="empty-sm-30 empty-xs-30"></div> #}
+{#												 <div class="simple-text">#}
+{#													<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>#}
+{#												 </div>#}
+{#												 <div class="empty-sm-50 empty-xs-30"></div> #}
+{#												 <a href="#" class="page-button button-style-1"><span class="txt">READ MORE</span></a>	#}
+{#											</div>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									</div>#}
+{#                  <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>#}
+{#								</div>#}
+{#								<div class="col-md-6">#}
+{#									 <div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_2-3.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pasta with Tomatoes</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#									<div class="empty-sm-30 empty-xs-30"></div>#}
+{#									<div class="menu-item menu-item-4 item-type-2">#}
+{#									  <div class="image hover-zoom">#}
+{#										  <img src="/static/img/home-4/offers_img_3-3.jpg" alt="">#}
+{#										  <div class="vertical-align full menu-button">#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#										  </div>#}
+{#									  </div>#}
+{#									  <div class="text">#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <h4 class="h4 caption"><a href="#" class="link-hover-line">Shrimp Pasta</a></h4>#}
+{#										  <div class="empty-sm-10 empty-xs-10"></div>#}
+{#										  <div class="simple-text">#}
+{#											<p>Ut enimex ea adminim  veniam, quis nostrud exercitation.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-20 empty-xs-20"></div>#}
+{#										  <div class="simple-text">#}
+{#											  <p><b>Ingredients: </b>olive oil, Barilla Plus pasta, cherry tomatoes, kosher salt, black pepper, fresh basil leaves.</p>#}
+{#										  </div>#}
+{#										  <div class="empty-sm-25 empty-xs-25"></div>#}
+{#										  <div class="menu-price fw-400 title main-col">$6.25</div>#}
+{#                      <div class="empty-sm-0 empty-xs-20"></div>#}
+{#									  </div>#}
+{#									</div>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="empty-sm-50 empty-xs-50"></div>  #}
+{#					<div class="pagination swiper-pagination-1"></div>#}
+{#				</div>#}
+{#		    </div>#}
+{#		  <div class="empty-lg-100 empty-md-80 empty-sm-10 empty-xs-10"></div>  #}
+{#	</section>#}
    
 {#    <section class="section">#}
 {#        <div class="bg left auto pos-center-left lgx-hide" style="background-image: url(/static/img/home-4/news_bg.jpg)"></div>#}
@@ -1827,7 +1832,7 @@
                            	    <h4 class="h4 tt caption">{% trans 'working time' %}</h4>
                            	    <div class="empty-sm-10 empty-xs-10"></div>   
                            	    <div class="simple-text">
-                           	    	<p>{{ working_time_text}}</p>
+                           	    	<p style="white-space: pre-wrap; ">{{ working_time_text}}</p>
                            	    </div>
                            	    <div class="empty-sm-15 empty-xs-15"></div>  
                            		<ul class="list-style-1 ul-list">

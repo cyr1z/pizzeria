@@ -20,7 +20,7 @@ class AddonTranslationOptions(TranslationOptions):
 @register(SiteSettings)
 class SiteSettingsTranslationOptions(TranslationOptions):
     fields = ('contact_about_text', 'address', 'welcome_text',
-              'welcome_title', 'working_time_text')
+              'welcome_title', 'working_time_text', 'currency_symbol',)
 
 
 @register(MainPageSlide)

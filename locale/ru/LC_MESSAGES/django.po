@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 18:00+0200\n"
+"POT-Creation-Date: 2021-03-14 11:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -368,35 +368,51 @@ msgstr "Заказать"
 msgid "Reservation"
 msgstr "Бронирование"
 
-#: pizzeria/templates/index.html:243 pizzeria/templates/index.html:1791
+#: pizzeria/templates/index.html:243 pizzeria/templates/index.html:1796
 msgid "Contact"
 msgstr "Контакты"
 
-#: pizzeria/templates/index.html:291
+#: pizzeria/templates/index.html:289
 msgid "read more"
 msgstr "подробнее"
 
-#: pizzeria/templates/index.html:1806 pizzeria/templates/index.html:1870
+#: pizzeria/templates/index.html:324
+msgid "Welcome!"
+msgstr "Добро пожаловать!"
+
+#: pizzeria/templates/index.html:402
+msgid "Large selection of ingredients"
+msgstr "Большой выбор ингридиентов"
+
+#: pizzeria/templates/index.html:445
+msgid "Quick pizza delivery"
+msgstr "Быстрая доставка пиццы"
+
+#: pizzeria/templates/index.html:476
+msgid "Fresh fruit juices"
+msgstr "Свежие соки"
+
+#: pizzeria/templates/index.html:1811 pizzeria/templates/index.html:1875
 msgid "Address: "
 msgstr "Адрес: "
 
-#: pizzeria/templates/index.html:1813 pizzeria/templates/index.html:1820
-#: pizzeria/templates/index.html:1871
+#: pizzeria/templates/index.html:1818 pizzeria/templates/index.html:1825
+#: pizzeria/templates/index.html:1876
 msgid "Phone: "
 msgstr "Телефон: "
 
-#: pizzeria/templates/index.html:1827
+#: pizzeria/templates/index.html:1832
 msgid "working time"
 msgstr "Мы открыты:"
 
-#: pizzeria/templates/index.html:1834
+#: pizzeria/templates/index.html:1839
 msgid "Monday  -  Friday"
 msgstr "Понедельник - Пятница"
 
-#: pizzeria/templates/index.html:1835
+#: pizzeria/templates/index.html:1840
 msgid "Saturday"
 msgstr "Суббота"
 
-#: pizzeria/templates/index.html:1836
+#: pizzeria/templates/index.html:1841
 msgid "Sunday"
 msgstr "Воскресенье"
