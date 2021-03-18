@@ -80,8 +80,8 @@ class PricesInline(admin.TabularInline):
 
 @admin.register(Food)
 class FoodAdmin(TranslationAdmin):
-    list_display = ('title', 'category', 'is_active', 'is_vegetarian')
-    list_editable = ("is_active",)
+    list_display = ('title', 'category', 'is_active', "is_on_front")
+    list_editable = ("is_active", "is_on_front")
     search_fields = ("title",)
     inlines = (
         PricesInline,

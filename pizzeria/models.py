@@ -362,6 +362,10 @@ class Food(models.Model):
         through='Price',
         related_name='foods'
     )
+    is_on_front = models.BooleanField(
+        default=False,
+        verbose_name=_('Is on front'),
+    )
 
     @property
     def unicode_title(self):
