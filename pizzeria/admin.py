@@ -68,8 +68,8 @@ class SiteSettingsAdmin(TranslationAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(TranslationAdmin):
-    list_display = ('title', 'is_active')
-    list_editable = ("is_active",)
+    list_display = ('title', 'is_active', "is_on_front")
+    list_editable = ("is_active", "is_on_front")
     search_fields = ("title",)
 
 
@@ -82,10 +82,9 @@ class PricesInline(admin.TabularInline):
 class FoodAdmin(TranslationAdmin):
     list_display = ('title', 'category', 'is_active', "is_on_front")
     list_editable = ("is_active", "is_on_front")
-    search_fields = ("title",)
-    inlines = (
-        PricesInline,
-    )
+    search_fields = ("title", "category")
+    list_filter = ('category',)
+    inlines = (PricesInline,)
 
 
 @admin.register(MainPageSlide)
@@ -110,11 +109,13 @@ class PriceAdmin(admin.ModelAdmin):
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ('value', 'category')
+    list_filter = ('category',)
 
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'price', 'status', 'created_at', 'finished', 'paid')
+    list_display = (
+    'user', 'price', 'status', 'created_at', 'finished', 'paid')
     search_fields = ("user",)
 
 

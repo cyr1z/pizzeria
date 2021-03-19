@@ -151,7 +151,7 @@
     
     <header class="header header-style-3">
       <div class="navigation flex-align">   
-         <a href="/" class="logo"><img src="/static/img/logo.png" alt="{{ site_name }}"><img src="/static/img/logo2.png" alt="{{ site_name }}" class="logo-type-2"></a>
+         <a href="{% url 'index' %}" class="logo"><img src="/static/img/logo.png" alt="{{ site_name }}"><img src="/static/img/logo2.png" alt="{{ site_name }}" class="logo-type-2"></a>
           <div class="burger-menu"><i></i></div>
            <div class="nav">
             <div class="nav-align-wrap">
@@ -163,8 +163,12 @@
                       <div class="page-span-4 page-span"></div>
                       <div class="search-form-wrap"> 
                       
-                       <form action="#" class="search-form">
-                           <input type="text" placeholder="Search for..." class="input-search" required>
+                       <form action="{% url 'shop' %}" class="search-form">
+                           <input type="text" class="input-search"
+                                    {% if request.GET.q %}
+                                   value="{{ request.GET.q }}" {% else %}
+                                   placeholder={% trans "Search..." %} {% endif %}
+                                   name="q" required="">
                            <div class="submit-search">
                               <input type="submit" value="">
                               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="14px" height="14px">
@@ -211,11 +215,11 @@
             </div>
             <nav>
               <ul class="header-menu">
-                <li class="active"><a href="/">{% trans 'Home'%}</a>
+                <li class="active"><a href="{% url 'index' %}">{% trans 'Home'%}</a>
 
                     </li>
 {#                    <li><a href="about.html">{% trans 'About' %}</a></li>#}
-                    <li><a href="/">{% trans 'Shop' %}</a>
+                    <li><a href="{% url 'shop' %}">{% trans 'Shop' %}</a>
 
                     </li>
                     <li><a href="/#reservation">{% trans 'Reservation' %}</a>

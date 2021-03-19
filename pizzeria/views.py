@@ -1,9 +1,16 @@
+from django.contrib.postgres.search import SearchVector, SearchQuery, \
+    SearchRank
+
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.utils.translation import gettext_lazy as _
-from pizzeria.models import SiteSettings, MainPageSlide
+from django_filters.views import FilterView
+
+from pizzeria.filters import FoodFilter
+from pizzeria.models import SiteSettings, MainPageSlide, Food
 
 
 class MainPage(TemplateView):
@@ -86,5 +93,39 @@ class MainPage(TemplateView):
         weekday_work_finish = SiteSettings.objects.first().weekday_work_finish
         if weekday_work_finish:
             context.update({'weekday_work_finish': weekday_work_finish})
+
+        return context
+
+
+class Shop(FilterView):
+    """
+    shop catalog page
+    """
+    template_name = 'shop.html'
+    model = Food
+    paginate_by = 16
+    queryset = Food.objects.filter(is_active=True)
+    context_object_name = 'food_list'
+    filterset_class = FoodFilter
+
+    def get_queryset(self):
+        search_query = self.request.GET.get('q')
+        qs = self.queryset
+
+        if search_query:
+            search_query = SearchQuery(search_query)
+            search_vector = SearchVector('title', 'category__title')
+            qs = qs.annotate(
+                search=search_vector,
+                rank=SearchRank(search_vector, search_query)
+            ).filter(search=search_query).order_by('-rank')
+
+        if self.kwargs.get('category_slug'):
+            qs = qs.filter(category__slug=self.kwargs['category_slug'])
+
+        return qs
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
 
         return context

@@ -300,6 +300,10 @@ class Category(models.Model):
         default=True,
         verbose_name=_('Is active'),
     )
+    is_on_front = models.BooleanField(
+        default=False,
+        verbose_name=_('Is on front'),
+    )
 
     @property
     def unicode_title(self):
