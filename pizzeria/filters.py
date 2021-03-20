@@ -9,7 +9,7 @@ from .models import Food
 
 
 class FoodFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(name='name', lookup_expr='icontains')
+    title = django_filters.CharFilter(title='title', lookup_expr='icontains')
     category__slug = django_filters.CharFilter()
     price__gt = django_filters.NumberFilter(name='price', lookup_expr='gt')
     price__lt = django_filters.NumberFilter(name='price', lookup_expr='lt')

@@ -375,6 +375,13 @@ class Food(models.Model):
     def unicode_title(self):
         return unidecode(self.title)
 
+    @property
+    def prices(self):
+        return (
+            {'price': price.value, 'size': price.size.value}
+            for price in self.price_set.all()
+        )
+
     slug = AutoSlugField(populate_from='unicode_title')
 
     def get_absolute_url(self):

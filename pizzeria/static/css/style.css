@@ -38,21 +38,21 @@
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Bitter:400,400i');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Ubuntu:300,400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Great+Vibes');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Oleo+Script:400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Raleway:300,400,700,800');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Noto+Serif:400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Bevan');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Lora:400,700');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Euphoria+Script');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Norican');
-@import url('../../../external.html?link=https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Bitter:400,400i');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script:400,700');
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,700');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700');
+@import url('https://fonts.googleapis.com/css?family=Bevan');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700');
+@import url('https://fonts.googleapis.com/css?family=Euphoria+Script');
+@import url('https://fonts.googleapis.com/css?family=Norican');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* 01 - RESET */
