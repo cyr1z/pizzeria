@@ -1,4 +1,3 @@
-
 from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
 
@@ -99,7 +98,7 @@ class MainPage(TemplateView):
         if menu_categories_text:
             context.update({'menu_categories_text': menu_categories_text})
         # add categories
-        categories = Category.objects.all()[:6]
+        categories = Category.objects.filter(is_on_front=True)[:6]
         if categories:
             context.update({'categories': categories})
 
@@ -122,7 +121,17 @@ class Shop(ListView):
 
         if search_query:
             search_query = SearchQuery(search_query)
-            search_vector = SearchVector('title', 'category__title')
+            search_vector = SearchVector(
+                'title_uk',
+                'title_ru',
+                'title_en',
+                'category__title_ru',
+                'category__title_uk',
+                'category__title_en',
+                'description_uk',
+                'description_ru',
+                'description_en',
+            )
             qs = qs.annotate(
                 search=search_vector,
                 rank=SearchRank(search_vector, search_query)
@@ -167,4 +176,3 @@ class FoodDetail(DetailView):
         context = super().get_context_data(object_list=object_list, **kwargs)
 
         return context
-
