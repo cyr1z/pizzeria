@@ -94,6 +94,14 @@ class MainPage(TemplateView):
         weekday_work_finish = SiteSettings.objects.first().weekday_work_finish
         if weekday_work_finish:
             context.update({'weekday_work_finish': weekday_work_finish})
+        # add menu_categories_text
+        menu_categories_text = SiteSettings.objects.first().menu_categories_text
+        if menu_categories_text:
+            context.update({'menu_categories_text': menu_categories_text})
+        # add categories
+        categories = Category.objects.all()[:6]
+        if categories:
+            context.update({'categories': categories})
 
         return context
 

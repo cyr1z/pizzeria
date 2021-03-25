@@ -131,6 +131,21 @@ class SiteSettings(models.Model):
         blank=True,
         verbose_name=_('welcome text'),
     )
+    menu_categories_text = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('menu categories text'),
+    )
+    pizza_menu_text = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('pizza text'),
+    )
+    reservation_text = QuillField(
+        null=True,
+        blank=True,
+        verbose_name=_('reservation text'),
+    )
     working_time_text = models.CharField(
         max_length=255,
         null=True,

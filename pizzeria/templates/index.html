@@ -497,114 +497,43 @@
         		<div class="row item-animation scroll-type-1">
         			<div class="col-md-6 col-md-offset-3">
         				<div class="main-caption text-center color-type-1">
-						   <h2 class="h2 title">Menu categories</h2>
+						   <h2 class="h2 title">{% trans 'Menu categories' %}</h2>
 						   <div class="empty-sm-20 empty-xs-20"></div> 
 						   <img src="/static/img/title_sepp_4.png" alt="">
 						   <div class="empty-sm-15 empty-xs-15"></div>   
 						   <div class="simple-text md">
-							   <p><b>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</b></p>
+							   <p><b>
+                                   {% if menu_categories_text %}
+                               {{ menu_categories_text.html|safe }}
+                               {% endif %}
+                               </b></p>
 						   </div>
 						   <div class="empty-lg-70 empty-md-60 empty-sm-60 empty-xs-40"></div>
 						</div>
         			</div>
         		</div>
         		<div class="row item-animation scroll-type-1">
+                    {% for category in categories %}
+
+
+
         			<div class="col-md-4 col-sm-4 col-xs-12">
         				<div class="menu-item menu-item-4">
 						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_1.jpg" alt="">
+							  <img src="/{{ category.image }}" alt="{{ category.title }}">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
+								  <a href="{% url 'category' category.slug %}" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
 							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pizza</a></h4>
+							  <h4 class="h4 caption"><a href="{% url 'category' category.slug %}" class="link-hover-line">{{ category.title }}</a></h4>
 							  <div class="empty-sm-10 empty-xs-10"></div>
 						  </div>
 					    </div>
        		          <div class="empty-sm-30 empty-xs-30"></div>	
         			</div>
-        			<div class="col-md-4 col-sm-4 col-xs-12">
-        				<div class="menu-item menu-item-4">
-						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_2.jpg" alt="">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">starters and sides</a></h4>
-							  <div class="empty-sm-10 empty-xs-10"></div>
-						  </div>
-					    </div>
-       		          <div class="empty-sm-30 empty-xs-30"></div>	
-        			</div>
-        			<div class="col-md-4 col-sm-4 col-xs-12">
-        				<div class="menu-item menu-item-4">
-						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_3.jpg" alt="">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">pasta and mains</a></h4>
-							  <div class="empty-sm-10 empty-xs-10"></div>
-						  </div>
-					    </div>
-       		          <div class="empty-sm-30 empty-xs-30"></div>	
-        			</div>
-        			<div class="col-md-4 col-sm-4 col-xs-12">
-        				<div class="menu-item menu-item-4">
-						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_4.jpg" alt="">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Desserts</a></h4>
-							  <div class="empty-sm-10 empty-xs-10"></div>
-						  </div>
-					    </div>
-       		          <div class="empty-sm-30 empty-xs-30"></div>	
-        			</div>
-        			<div class="col-md-4 col-sm-4 col-xs-12">
-        				<div class="menu-item menu-item-4">
-						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_5.jpg" alt="">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Drinks</a></h4>
-							  <div class="empty-sm-10 empty-xs-10"></div>
-						  </div>
-					    </div>
-       		          <div class="empty-sm-30 empty-xs-30"></div>	
-        			</div>
-        			<div class="col-md-4 col-sm-4 col-xs-12">
-        				<div class="menu-item menu-item-4">
-						  <div class="image hover-zoom">
-							  <img src="/static/img/home-4/menu_item_6.jpg" alt="">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Salad</a></h4>
-							  <div class="empty-sm-10 empty-xs-10"></div>
-						  </div>
-					    </div>
-       		          <div class="empty-sm-30 empty-xs-30"></div>	
-        			</div>
+        			{% endfor %}
         		</div>
         	</div>
         <div class="empty-lg-100 empty-md-70 empty-sm-30 empty-xs-30"></div>	
@@ -1253,7 +1182,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_1.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1276,7 +1205,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_2.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1299,7 +1228,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_3.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1324,7 +1253,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_4.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1347,7 +1276,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_5.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1370,7 +1299,7 @@
 						  <div class="image">
 							  <img src="/static/img/home-4/main_menu_img_6.jpg" alt="" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">view more</span></a>
+								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
@@ -1439,7 +1368,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_2-1.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
@@ -1463,7 +1392,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_3-1.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
@@ -1511,7 +1440,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_2-2.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
@@ -1535,7 +1464,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_3-2.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
@@ -1583,7 +1512,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_2-3.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
@@ -1607,7 +1536,7 @@
 {#									  <div class="image hover-zoom">#}
 {#										  <img src="/static/img/home-4/offers_img_3-3.jpg" alt="">#}
 {#										  <div class="vertical-align full menu-button">#}
-{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">view more</span></a>#}
+{#											  <a href="#" class="page-button button-style-1 sm"><span class="txt">{% trans 'view more' %}</span></a>#}
 {#										  </div>#}
 {#									  </div>#}
 {#									  <div class="text">#}
