@@ -51,8 +51,8 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700');
 @import url('https://fonts.googleapis.com/css?family=Lora:400,700');
 @import url('https://fonts.googleapis.com/css?family=Euphoria+Script');
-@import url('https://fonts.googleapis.com/css?family=Norican');
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Cuprum:400,700');
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* 01 - RESET */
@@ -289,9 +289,9 @@ div[class*="empty-"] {width: 100%; clear: both;}
 .f1 {font-family: 'Noto Serif', serif;}
 .f1 {font-family: 'Bevan', cursive;}
 .f11 {font-family: 'Cormorant Garamond', serif;}
-.f1 {font-family: 'Lora', serif;}
+.f1 {font-family: 'Cuprum', serif;}
 .f1 {font-family: 'Euphoria Script', cursive;}
-.f1 {font-family: 'Norican', cursive;}
+.f1 {font-family: 'Lobster', cursive;}
 
 .h1 {font-size: 80px; line-height: 70px;}
 .h2 {font-size: 50px; line-height: 62px;}
@@ -333,8 +333,8 @@ div[class*="empty-"] {width: 100%; clear: both;}
 .page-style-3 .color-type-1 .simple-text p {color: rgba(255,255,255,0.6);}
 .page-style-3 .menu-price {font-weight: 400;}
 
-.page-style-4, .page-style-4 textarea, .page-style-4 input {font-family: 'Lato', sans-serif;}
-.page-style-4 .title {font-family: 'Norican', cursive;}
+.page-style-4, .page-style-4 textarea, .page-style-4 input {font-family: 'Cuprum', sans-serif;}
+.page-style-4 .title {font-family: 'Lobster', cursive;}
 .page-style-4 .title:not(.main-col), .page-style-4 .h5.color-1, .page-style-4 .color-2 .simple-text {color: #464646;}
 .page-style-4 h1, .page-style-4 h3, .page-style-4 h4, .page-style-4 h5, .page-style-4 h6 {font-weight: 700;}
 .page-style-4 .h1 {font-size: 60px; line-height: 70px;}
@@ -349,7 +349,7 @@ div[class*="empty-"] {width: 100%; clear: both;}
 .page-style-5 .h2 {font-size: 60px; line-height: 70px;}
 .page-style-5 h3, .page-style-5 h4, .page-style-5 h5, .page-style-5 h6 {font-weight: 700;}
 
-.page-style-6, .page-style-6 textarea, .page-style-6 input, .page-style-6 .menu-price.style-2, .input-field.type-2, .order-list .order-price, .meal-block .h3{font-family: 'Lora', serif;}
+.page-style-6, .page-style-6 textarea, .page-style-6 input, .page-style-6 .menu-price.style-2, .input-field.type-2, .order-list .order-price, .meal-block .h3{font-family: 'Cuprum', serif;}
 .page-style-6 .title {font-family: 'Great Vibes', cursive;}
 .page-style-6 h1, .page-style-6 h2, .page-style-6 h3, .page-style-6 .check-subtitle{font-family: 'Cormorant Garamond', serif;}
 .page-style-6 h1, .page-style-6 h2, .page-style-6 h3, .page-style-6 h4, .page-style-6 h5, .page-style-6 h6 {font-weight: 700; color: #4b4b4b;}
@@ -974,7 +974,7 @@ textarea.input-field.sm {height: 125px;}
 .countdown-type .ClassyCountdown-wrapper > div > div {display: block!important; margin-top: 0px!important;}
 .countdown-type .ClassyCountdown-value div {font-size: 65px; font-weight: 700; color: #fff;  line-height: 80px; text-align: center; font-family: 'Great Vibes', cursive;}
 .countdown .ClassyCountdown-value {position: absolute; top: 50%; left: 0px; width: 100%; margin-top: 0px!important; font-size: inherit!important; transform: translateY(-50%);}
-.countdown-type .ClassyCountdown-value span {font-size: 14px!important; font-weight: 400; color: rgba(255,255,255,0.6); font-family: 'Lora', sans-serif; text-transform: uppercase;}
+.countdown-type .ClassyCountdown-value span {font-size: 14px!important; font-weight: 400; color: rgba(255,255,255,0.6); font-family: 'Cuprum', sans-serif; text-transform: uppercase;}
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
 /* 06 - FOOTERS */
@@ -1501,7 +1501,7 @@ body.overflow {overflow: hidden;}
 .view-2 .point-3:after{top: auto;bottom: 2px;}
 select.input-field.type-2 {font-weight: 700;background: url(../img/select-arrow-2.png) no-repeat;background-position: top 9px right 1px;background-size: 12px 6px;cursor: pointer;}
 .pizza-size .h5.sm{line-height: 44px;}
-.pizza-size .input-field {font-size: 14px;font-family: 'Lora', serif;}
+.pizza-size .input-field {font-size: 14px;font-family: 'Cuprum', serif;}
 
 @media (min-width: 1200px) {
 	.container-fluid.padding-70{padding: 0 70px;}

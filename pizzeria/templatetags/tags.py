@@ -56,3 +56,9 @@ def show_lang_selector():
 @register.inclusion_tag('copyright.html')
 def show_copyright():
     return {'site_name': SiteSettings.objects.first().site_name}
+
+
+@register.inclusion_tag('categories_menu.html')
+def show_categories_menu():
+    categories = Category.objects.all()
+    return {'categories': categories}

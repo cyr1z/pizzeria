@@ -1,3 +1,4 @@
+
 from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
 
@@ -5,12 +6,12 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
 
 from pizzeria.filters import FoodFilter
-from pizzeria.models import SiteSettings, MainPageSlide, Food
+from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
 
 
 class MainPage(TemplateView):
@@ -97,7 +98,7 @@ class MainPage(TemplateView):
         return context
 
 
-class Shop(FilterView):
+class Shop(ListView):
     """
     shop catalog page
     """
@@ -106,7 +107,6 @@ class Shop(FilterView):
     paginate_by = 16
     queryset = Food.objects.filter(is_active=True)
     context_object_name = 'food_list'
-    filterset_class = FoodFilter
 
     def get_queryset(self):
         search_query = self.request.GET.get('q')
@@ -120,9 +120,6 @@ class Shop(FilterView):
                 rank=SearchRank(search_vector, search_query)
             ).filter(search=search_query).order_by('-rank')
 
-        if self.kwargs.get('category_slug'):
-            qs = qs.filter(category__slug=self.kwargs['category_slug'])
-
         return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -132,3 +129,34 @@ class Shop(FilterView):
         if currency_symbol:
             context.update({'currency_symbol': currency_symbol})
         return context
+
+
+class ShopCategoryDetailView(DetailView):
+    """
+    List of category foods
+    """
+    model = Category
+    template_name = 'shop.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        # add posts pagination
+        foods = self.get_object().foods.filter(is_active=True)
+        paginator = Paginator(foods, 16)
+        page = self.request.GET.get('page', 1)
+        context.update({'food_list': paginator.get_page(page)})
+        return context
+
+
+class FoodDetail(DetailView):
+    """
+    Food detail
+    """
+    model = Food
+    template_name = 'shop-detail.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+
+        return context
+

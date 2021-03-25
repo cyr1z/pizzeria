@@ -1,0 +1,17 @@
+{% load i18n %}
+
+<aside>
+    <div class="empty-sm-65 empty-xs-65"></div>
+    <h5 class="tt h5 color-2">{% trans 'Categories' %}</h5>
+    <div class="empty-sm-20 empty-xs-10"></div>
+    <ul class="list-style-4 type-2 ul-list">
+
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'category' category.slug %}"
+                   class="link-hover">{{ category.title }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+</aside>
