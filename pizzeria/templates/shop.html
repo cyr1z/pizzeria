@@ -511,9 +511,11 @@
             <div class="row">
                 <div class="col-lg-2 col-md-3 col-xs-12">
                     <aside>
-                        <form action="#" class="search-form type-2">
-                            <input type="text" placeholder="Search for..."
-                                   class="input-search" required="">
+                        <form action="{% url 'shop' %}" class="search-form type-2">
+                            <input type="text" {% if request.GET.q %}
+                                   value="{{ request.GET.q }}" {% else %}
+                                   placeholder={% trans "Search..." %} {% endif %}
+                                   class="input-search" name="q" required="">
                             <div class="submit-search">
                                 <input type="submit" value="">
                                 <svg xmlns="http://www.w3.org/2000/svg"
