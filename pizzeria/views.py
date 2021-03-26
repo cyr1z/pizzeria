@@ -124,7 +124,7 @@ class Shop(ListView):
         try:
             price_limit_min = float(self.request.GET.get('from'))
             price_limit_max = float(self.request.GET.get('to'))
-        except TypeError:
+        except (TypeError, ValueError):
             price_limit_min = 0
             price_limit_max = 0
 
@@ -197,7 +197,7 @@ class ShopCategoryDetailView(DetailView):
         try:
             price_limit_min = float(self.request.GET.get('from'))
             price_limit_max = float(self.request.GET.get('to'))
-        except TypeError:
+        except (TypeError, ValueError):
             price_limit_min = 0
             price_limit_max = 0
 
