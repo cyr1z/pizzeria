@@ -9,6 +9,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
 
+from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES
 from pizzeria.filters import FoodFilter
 from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
 
@@ -111,7 +112,7 @@ class Shop(ListView):
     """
     template_name = 'shop.html'
     model = Food
-    paginate_by = 16
+    paginate_by = DEFAULT_PAGINATE
     queryset = Food.objects.filter(is_active=True)
 
     context_object_name = 'food_list'
@@ -119,11 +120,13 @@ class Shop(ListView):
     food_count = 0
 
     def get_queryset(self):
+        if self.request.GET.get('ipp'):
+            self.paginate_by = self.request.GET.get('ipp')
         search_query = self.request.GET.get('q')
 
         try:
-            price_limit_min = float(self.request.GET.get('from'))
-            price_limit_max = float(self.request.GET.get('to'))
+            price_limit_min = float(self.request.GET.get('from', 0))
+            price_limit_max = float(self.request.GET.get('to', 0))
         except (TypeError, ValueError):
             price_limit_min = 0
             price_limit_max = 0
@@ -182,6 +185,8 @@ class Shop(ListView):
             context.update({'price_limits': self.price_limits})
         # add foods_count
         context.update({'foods_count': self.food_count})
+        context.update({'paginate_choices': PAGINATE_CHOICES})
+        context.update({'paginate_default': DEFAULT_PAGINATE})
         return context
 
 
@@ -195,8 +200,8 @@ class ShopCategoryDetailView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
 
         try:
-            price_limit_min = float(self.request.GET.get('from'))
-            price_limit_max = float(self.request.GET.get('to'))
+            price_limit_min = float(self.request.GET.get('from', 0))
+            price_limit_max = float(self.request.GET.get('to', 0))
         except (TypeError, ValueError):
             price_limit_min = 0
             price_limit_max = 0
@@ -223,12 +228,14 @@ class ShopCategoryDetailView(DetailView):
                 from_price=price_limit_min,
                 to_price=price_limit_max,
             )
-
-        paginator = Paginator(foods, 16)
+        ipp = self.request.GET.get('ipp', DEFAULT_PAGINATE)
+        paginator = Paginator(foods, ipp)
         page = self.request.GET.get('page', 1)
 
         context.update({'food_list': paginator.get_page(page)})
         context.update({'price_limits': price_limits})
+        context.update({'paginate_choices': PAGINATE_CHOICES})
+        context.update({'paginate_default': DEFAULT_PAGINATE})
 
         # add currency_symbol
         currency_symbol = SiteSettings.objects.first().currency_symbol

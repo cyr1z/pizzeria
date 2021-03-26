@@ -5,6 +5,7 @@
 {% load i18n %}
 {% load tags %}
 {% load crispy_forms_tags %}
+{% load humanize %}
 
 {% get_available_languages as LANGUAGES %}
 <head>
@@ -793,11 +794,22 @@
                                                 <p>{% trans 'Shown items per page' %}</p>
                                             </div>
                                         </div>
-                                        <select class="input-field type-2 main-col">
-                                            <option value="val1">10</option>
-                                            <option value="val1">40</option>
-                                            <option value="val1">25</option>
-                                            <option value="val1">38</option>
+                                        <select name="ipp" class="input-field type-2 main-col ipp">
+
+                                            {% for paginate_choice in paginate_choices %}
+                                            <option value="{{ paginate_choice }}"
+                                                {% if request.GET.ipp and request.GET.ipp in paginate_choices %}
+                                                    {% if paginate_choice == request.GET.ipp%}
+                                                        selected
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% if paginate_choice == paginate_default %}
+                                                        selected
+                                                    {% endif %}
+                                                {% endif %}
+                                            >
+                                                {{ paginate_choice }}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                     <div class="sort-by">
@@ -916,7 +928,7 @@
                                                     <div class="menu-price style-2 title main-col">
                                                         {{ price.size }}{{ food.category.size_unit }}
                                                         -
-                                                        {{ price.price }}{{ currency_symbol }} </div>
+                                                        {{ price.price|floatformat:2|intcomma }}{{ currency_symbol }} </div>
                                                 {% endfor %}
                                             </div>
                                         </div>
@@ -1000,7 +1012,7 @@
                                                     <div class="menu-price style-2 title main-col">
                                                         {{ price.size }}{{ food.category.size_unit }}
                                                         -
-                                                        {{ price.price }}{{ currency_symbol }} </div>
+                                                        {{ price.price|floatformat:2|intcomma }}{{ currency_symbol }} </div>
                                                 {% endfor %}
                                         </div>
                                     </div>
@@ -1624,6 +1636,22 @@
 
         $(document).ready(function () {
             $(".autoform").change(function (event) {
+                event.preventDefault();
+                let my_attr = $(this).serializeArray()
+                window.location.href = addParam(window.location.href, my_attr[0].name, my_attr[0].value)
+            });
+        });
+    </script>
+<script>
+        function addParam(currentUrl, key, val) {
+            var url = new URL(currentUrl);
+            url.searchParams.set(key, val);
+
+            return url.href;
+        }
+
+        $(document).ready(function () {
+            $(".ipp").change(function (event) {
                 event.preventDefault();
                 let my_attr = $(this).serializeArray()
                 window.location.href = addParam(window.location.href, my_attr[0].name, my_attr[0].value)
