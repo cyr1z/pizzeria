@@ -174,7 +174,7 @@ LANGUAGES = (
 #     ('en', 'English'),
 #     ('ru', 'Russian'),
 # )
-# месторасположение файлов перевода
+
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
@@ -195,5 +195,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/'
 
-PAGINATE_CHOICES = ['12', '16', '20', '24', '32', '40', '80']
+PAGINATE_CHOICES = ['4', '12', '16', '20', '24', '32', '40', '80']
 DEFAULT_PAGINATE = PAGINATE_CHOICES[1]

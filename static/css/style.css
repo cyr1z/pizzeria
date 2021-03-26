@@ -766,6 +766,7 @@ div[class*="empty-"] {width: 100%; clear: both;}
 .page-navigation a:hover:before {opacity: 1;}
 .right-arr {float: right;}
 .left-arr {float: left;}
+.page-navigation.disabled  a {pointer-events: none;}
 
 /*========FORM ELEMENTS=========*/
 

@@ -228,6 +228,8 @@ class ShopCategoryDetailView(DetailView):
                 from_price=price_limit_min,
                 to_price=price_limit_max,
             )
+
+        # item per page and paginator
         ipp = self.request.GET.get('ipp', DEFAULT_PAGINATE)
         paginator = Paginator(foods, ipp)
         page = self.request.GET.get('page', 1)

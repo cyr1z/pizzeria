@@ -68,3 +68,10 @@ def show_categories_menu():
 def show_categories_menu_footer():
     categories = Category.objects.filter(is_active=True)
     return {'categories': categories}
+
+
+@register.simple_tag
+def url_replace(request, field, value):
+    dict_ = request.GET.copy()
+    dict_[field] = value
+    return dict_.urlencode()
