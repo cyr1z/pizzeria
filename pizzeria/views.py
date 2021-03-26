@@ -1,6 +1,6 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
-
+from django.db.models import Avg, Max, Min
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
@@ -113,10 +113,21 @@ class Shop(ListView):
     model = Food
     paginate_by = 16
     queryset = Food.objects.filter(is_active=True)
+
     context_object_name = 'food_list'
+    price_limits = dict()
+    food_count = 0
 
     def get_queryset(self):
         search_query = self.request.GET.get('q')
+
+        try:
+            price_limit_min = float(self.request.GET.get('from'))
+            price_limit_max = float(self.request.GET.get('to'))
+        except TypeError:
+            price_limit_min = 0
+            price_limit_max = 0
+
         qs = self.queryset
 
         if search_query:
@@ -137,6 +148,27 @@ class Shop(ListView):
                 rank=SearchRank(search_vector, search_query)
             ).filter(search=search_query).order_by('-rank')
 
+        self.price_limits = qs.aggregate(
+            max_price=Max('price__value'),
+            min_price=Min('price__value'),
+        )
+        self.price_limits.update(
+            from_price=self.price_limits.get('min_price'),
+            to_price=self.price_limits.get('max_price'),
+        )
+
+        if price_limit_min and price_limit_max:
+            qs = qs.filter(
+                price__value__gte=price_limit_min,
+                price__value__lte=price_limit_max,
+            )
+            self.price_limits.update(
+                from_price=price_limit_min,
+                to_price=price_limit_max,
+            )
+
+        self.food_count = qs.count()
+
         return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -145,6 +177,11 @@ class Shop(ListView):
         currency_symbol = SiteSettings.objects.first().currency_symbol
         if currency_symbol:
             context.update({'currency_symbol': currency_symbol})
+        # add price_limits
+        if self.price_limits:
+            context.update({'price_limits': self.price_limits})
+        # add foods_count
+        context.update({'foods_count': self.food_count})
         return context
 
 
@@ -156,12 +193,50 @@ class ShopCategoryDetailView(DetailView):
     template_name = 'shop.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
+
+        try:
+            price_limit_min = float(self.request.GET.get('from'))
+            price_limit_max = float(self.request.GET.get('to'))
+        except TypeError:
+            price_limit_min = 0
+            price_limit_max = 0
+
         context = super().get_context_data(object_list=object_list, **kwargs)
-        # add posts pagination
+
         foods = self.get_object().foods.filter(is_active=True)
+
+        price_limits = foods.aggregate(
+            max_price=Max('price__value'),
+            min_price=Min('price__value')
+        )
+        price_limits.update(
+            from_price=price_limits.get('min_price'),
+            to_price=price_limits.get('max_price'),
+        )
+
+        if price_limit_min and price_limit_max:
+            foods = foods.filter(
+                price__value__gte=price_limit_min,
+                price__value__lte=price_limit_max,
+            )
+            price_limits.update(
+                from_price=price_limit_min,
+                to_price=price_limit_max,
+            )
+
         paginator = Paginator(foods, 16)
         page = self.request.GET.get('page', 1)
+
         context.update({'food_list': paginator.get_page(page)})
+        context.update({'price_limits': price_limits})
+
+        # add currency_symbol
+        currency_symbol = SiteSettings.objects.first().currency_symbol
+        if currency_symbol:
+            context.update({'currency_symbol': currency_symbol})
+
+        # add foods_count
+        context.update({'foods_count': foods.count()})
         return context
 
 

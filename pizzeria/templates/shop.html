@@ -592,22 +592,24 @@
                         {% show_categories_menu %}
                         <aside>
                             <div class="empty-sm-65 empty-xs-30"></div>
-                            <h5 class="tt h5 color-2">Price</h5>
+                            <h5 class="tt h5 color-2">{% trans 'Price' %}</h5>
                             <div class="empty-sm-20 empty-xs-10"></div>
-                            <form action="/" class="input-range">
+                            <form action="" class="input-range autoform">
 
-                                <div class="slider-range" data-counter="$"
-                                     data-position="start" data-from="2"
-                                     data-to="300" data-min="0" data-max="400">
+                                <div class="slider-range" data-counter="{{ currency_symbol }}"
+                                     data-position="" data-from="{{ price_limits.from_price }}"
+                                     data-to="{{ price_limits.to_price }}" data-min="{{ price_limits.min_price }}" data-max="{{ price_limits.max_price }}">
                                     <div class="range"></div>
                                     <div class="range-val flex-align">
                                         <div class="range-title">
-                                            Price:
+                                            {% trans 'Price' %}:
                                         </div>
-                                        <span class="amount-start">$2</span>
+                                        <span class="amount-start">
+                                            {{ price_limits.min_price }}
+                                        </span>
                                         <span>-</span>
                                         <span class="amount-end"
-                                              value="$300"></span>
+                                              value="{{ price_limits.max_price }}"></span>
                                     </div>
                                 </div>
                             </form>
@@ -779,16 +781,16 @@
                             <div class="shop-filter">
                                 <div class="found-items">
                                     <div class="simple-text">
-                                        <p>Found <span
-                                                class="main-col"><b>27</b></span>
-                                            items</p>
+                                        <p>{% trans 'Found' %} <span
+                                                class="main-col"><b>{{ foods_count }}</b></span>
+                                            {%  trans 'items' %}</p>
                                     </div>
                                 </div>
                                 <div class="shop-select">
                                     <div class="show-item">
                                         <div class="title-select">
                                             <div class="simple-text">
-                                                <p>Shown items per page</p>
+                                                <p>{% trans 'Shown items per page' %}</p>
                                             </div>
                                         </div>
                                         <select class="input-field type-2 main-col">
@@ -801,7 +803,7 @@
                                     <div class="sort-by">
                                         <div class="title-select">
                                             <div class="simple-text">
-                                                <p>Sort by</p>
+                                                <p>{% trans 'Sort by' %}</p>
                                             </div>
                                         </div>
                                         <select class="input-field type-2 main-col">
@@ -1196,25 +1198,8 @@
                     <div class="empty-sm-30 empty-xs-30"></div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-2 col-xs-6">
-                <div class="footer-item">
-                    <h5 class="h5">Menu categories</h5>
-                    <div class="empty-sm-15 empty-xs-15"></div>
-                    <ul class="list-style-3 ul-list">
-                        <li><a href="#" class="link-hover">PIZZA</a></li>
-                        <li><a href="#" class="link-hover">STARTERS AND
-                            SIDES</a></li>
-                        <li><a href="#" class="link-hover">PASTA AND MAINS</a>
-                        </li>
-                        <li><a href="#" class="link-hover">DESSERTS</a></li>
-                        <li><a href="#" class="link-hover">SALAD</a></li>
-                        <li><a href="#" class="link-hover">DRINKS</a></li>
-                        <li><a href="#" class="link-hover">EXCLUSIVE OFFES</a>
-                        </li>
-                    </ul>
-                    <div class="empty-sm-30 empty-xs-30"></div>
-                </div>
-            </div>
+
+            {% show_categories_menu_footer %}
             <div class="col-md-2 col-sm-2 col-xs-6">
                 <div class="footer-item">
                     <h5 class="h5">quick links</h5>
@@ -1629,6 +1614,21 @@
 <script src="/static/js/jquery.classycountdown.js"></script>
 <script src="/static/js/jarallax.js"></script>
 <script src="/static/js/all.js"></script>
+ <script>
+        function addParam(currentUrl, key, val) {
+            var url = new URL(currentUrl);
+            url.searchParams.set(key, val);
 
+            return url.href;
+        }
+
+        $(document).ready(function () {
+            $(".autoform").change(function (event) {
+                event.preventDefault();
+                let my_attr = $(this).serializeArray()
+                window.location.href = addParam(window.location.href, my_attr[0].name, my_attr[0].value)
+            });
+        });
+    </script>
 </body>
 </html>	

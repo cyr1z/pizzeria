@@ -392,10 +392,19 @@ class Food(models.Model):
 
     @property
     def prices(self):
-        return (
+        prices = tuple(
             {'price': price.value, 'size': price.size.value}
             for price in self.price_set.all()
         )
+        return sorted(prices, key=lambda x: x.get('price'))
+
+    # @property
+    # def min_price(self):
+    #     return self.prices[0].get('price')
+    #
+    # @property
+    # def max_price(self):
+    #     return self.prices[-1].get('price')
 
     slug = AutoSlugField(populate_from='unicode_title')
 

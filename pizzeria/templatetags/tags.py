@@ -60,5 +60,11 @@ def show_copyright():
 
 @register.inclusion_tag('categories_menu.html')
 def show_categories_menu():
-    categories = Category.objects.all()
+    categories = Category.objects.filter(is_active=True)
+    return {'categories': categories}
+
+
+@register.inclusion_tag('categories_menu_footer.html')
+def show_categories_menu_footer():
+    categories = Category.objects.filter(is_active=True)
     return {'categories': categories}

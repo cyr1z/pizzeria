@@ -21,7 +21,20 @@
 /* 18 - CHOOSE ANIMATION  */
 
 jQuery(function($) { "use strict";
-	
+
+  	function addParam(currentUrl, key, val) {
+            var url = new URL(currentUrl);
+            url.searchParams.set(key, val);
+
+            return url.href;
+  	}
+  	function addPriceLimits(currentUrl, from, to) {
+            var url = new URL(currentUrl);
+            url.searchParams.set('from', from);
+            url.searchParams.set('to', to);
+
+            return url.href;
+  	}
 	/*============================*/
 	/* 01 - VARIABLES */
 	/*============================*/					
@@ -526,6 +539,7 @@ jQuery(function($) { "use strict";
 					$('#amount-start-'+index).text(ui.values[ 0 ] + counter);
 					$('#amount-end-'+index).text(ui.values[ 1 ] + counter);					
 				}
+				window.location.href = addPriceLimits(window.location.href, ui.values[ 0 ], ui.values[ 1 ] )
 			}
 	    });
 	    if (position=='start'){
@@ -535,6 +549,7 @@ jQuery(function($) { "use strict";
     		$('#amount-start-'+index).text($('#slider-range-'+index).slider('values',0) + counter);
     		$('#amount-end-'+index).text($('#slider-range-'+index).slider('values',1) + counter);    		
     	}
+
     });
                     
     /*============================*/
