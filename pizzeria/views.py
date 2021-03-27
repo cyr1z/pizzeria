@@ -1,6 +1,6 @@
 from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
-from django.db.models import Avg, Max, Min
+from django.db.models import Avg, Max, Min, Count
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
@@ -9,7 +9,8 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.utils.translation import gettext_lazy as _
 from django_filters.views import FilterView
 
-from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES
+from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES, \
+    ORDERINGS, DEFAULT_ORDERING
 from pizzeria.filters import FoodFilter
 from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
 
@@ -131,7 +132,11 @@ class Shop(ListView):
             price_limit_min = 0
             price_limit_max = 0
 
-        qs = self.queryset
+        qs = self.queryset.annotate(
+            max_price_max=Max('price__value'),
+            min_price_min=Min('price__value'),
+            orders_count=Count('order_item'),
+        )
 
         if search_query:
             search_query = SearchQuery(search_query)
@@ -162,8 +167,8 @@ class Shop(ListView):
 
         if price_limit_min and price_limit_max:
             qs = qs.filter(
-                price__value__gte=price_limit_min,
-                price__value__lte=price_limit_max,
+                max_price_max__gte=price_limit_min,
+                min_price_min__lte=price_limit_max,
             )
             self.price_limits.update(
                 from_price=price_limit_min,
@@ -171,6 +176,13 @@ class Shop(ListView):
             )
 
         self.food_count = qs.count()
+
+        ordering = self.request.GET.get('ordering', DEFAULT_ORDERING)
+        if ordering not in ORDERINGS.keys():
+            ordering = DEFAULT_ORDERING
+
+        if not search_query:
+            qs = qs.order_by(ordering)
 
         return qs
 
@@ -187,6 +199,7 @@ class Shop(ListView):
         context.update({'foods_count': self.food_count})
         context.update({'paginate_choices': PAGINATE_CHOICES})
         context.update({'paginate_default': DEFAULT_PAGINATE})
+        context.update({'orderings': ORDERINGS})
         return context
 
 
@@ -210,6 +223,11 @@ class ShopCategoryDetailView(DetailView):
 
         foods = self.get_object().foods.filter(is_active=True)
 
+        foods = foods.annotate(
+            max_price_max=Max('price__value'),
+            min_price_min=Min('price__value'),
+            orders_count=Count('order_item'),
+        )
         price_limits = foods.aggregate(
             max_price=Max('price__value'),
             min_price=Min('price__value')
@@ -221,13 +239,21 @@ class ShopCategoryDetailView(DetailView):
 
         if price_limit_min and price_limit_max:
             foods = foods.filter(
-                price__value__gte=price_limit_min,
-                price__value__lte=price_limit_max,
+                max_price_max__gte=price_limit_min,
+                min_price_min__lte=price_limit_max,
             )
             price_limits.update(
                 from_price=price_limit_min,
                 to_price=price_limit_max,
             )
+
+        # Order by
+        ordering = self.request.GET.get('ordering', DEFAULT_ORDERING)
+
+        if ordering not in ORDERINGS.keys():
+            ordering = DEFAULT_ORDERING
+
+        foods = foods.order_by(ordering)
 
         # item per page and paginator
         ipp = self.request.GET.get('ipp', DEFAULT_PAGINATE)
@@ -238,6 +264,7 @@ class ShopCategoryDetailView(DetailView):
         context.update({'price_limits': price_limits})
         context.update({'paginate_choices': PAGINATE_CHOICES})
         context.update({'paginate_default': DEFAULT_PAGINATE})
+        context.update({'orderings': ORDERINGS})
 
         # add currency_symbol
         currency_symbol = SiteSettings.objects.first().currency_symbol

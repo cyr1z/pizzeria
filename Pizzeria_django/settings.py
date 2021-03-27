@@ -156,13 +156,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uk'
 
-
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'uk'
 
 MODELTRANSLATION_TRANSLATION_FILES = (
     'pizzeria.translations',
 )
-
 
 LANGUAGES = (
     ('uk', _('Ukrainian')),
@@ -197,3 +195,10 @@ MEDIA_URL = '/'
 
 PAGINATE_CHOICES = ['4', '12', '16', '20', '24', '32', '40', '80']
 DEFAULT_PAGINATE = PAGINATE_CHOICES[1]
+ORDERINGS = {
+    'category': _('Standart'),
+    '-orders_count': _('Popular'),
+    'min_price_min': _('Price: Low to High'),
+    '-max_price_max': _('Price: High to low'),
+}
+DEFAULT_ORDERING = 'category'

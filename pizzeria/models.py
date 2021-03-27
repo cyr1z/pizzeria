@@ -398,13 +398,16 @@ class Food(models.Model):
         )
         return sorted(prices, key=lambda x: x.get('price'))
 
-    # @property
-    # def min_price(self):
-    #     return self.prices[0].get('price')
-    #
-    # @property
-    # def max_price(self):
-    #     return self.prices[-1].get('price')
+    @property
+    def min_price(self):
+        prices = self.price_set.all().values('value')
+        return prices.order_by('-value')[0].get('value')
+
+
+    @property
+    def max_price(self):
+        prices = self.price_set.all().values('value')
+        return prices.order_by('value')[0].get('value')
 
     slug = AutoSlugField(populate_from='unicode_title')
 

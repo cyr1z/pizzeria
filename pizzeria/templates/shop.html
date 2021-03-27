@@ -659,120 +659,6 @@
                                 </label>
                             </div>
                         </aside>
-                        <aside>
-                            <div class="empty-sm-65 empty-xs-30"></div>
-                            <h5 class="tt h5 color-2">Ingredients</h5>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox" checked="">
-                                    <span>
-                        <i></i>
-                        <p>Ham</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Salama</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Tomato</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Cucumber</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Onions</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox" checked="">
-                                    <span>
-                        <i></i>
-                        <p>Green</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Cheese</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Fish</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Eggs</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Species</p>  
-                      </span>
-                                </label>
-                            </div>
-                            <div class="empty-sm-20 empty-xs-10"></div>
-                            <div class="checkbox-entry-wrap type-1">
-                                <label class="checkbox-entry">
-                                    <input type="checkbox">
-                                    <span>
-                        <i></i>
-                        <p>Bread</p>  
-                      </span>
-                                </label>
-                            </div>
-                        </aside>
                     </div>
                     <div class="empty-md-0 empty-sm-30 empty-xs-30"></div>
                 </div>
@@ -818,15 +704,14 @@
                                                 <p>{% trans 'Sort by' %}</p>
                                             </div>
                                         </div>
-                                        <select class="input-field type-2 main-col">
-                                            <option value="val1">popular
-                                            </option>
-                                            <option value="val1">popular-1
-                                            </option>
-                                            <option value="val1">popular-2
-                                            </option>
-                                            <option value="val1">popular-3
-                                            </option>
+                                        <select name="ordering" class="input-field type-2 main-col ordering-selector">
+                                        {% for ordering, name in orderings.items %}
+                                            <option
+                                                    {% if ordering == request.GET.ordering%}
+                                                        selected
+                                                    {% endif %}
+                                                    value="{{ ordering }}">{{ name }}</option>
+                                        {% endfor %}
                                         </select>
                                     </div>
                                     <ul class="item-tabs type-2">
@@ -1753,6 +1638,22 @@
 
         $(document).ready(function () {
             $(".ipp").change(function (event) {
+                event.preventDefault();
+                let my_attr = $(this).serializeArray()
+                window.location.href = addParam(window.location.href, my_attr[0].name, my_attr[0].value)
+            });
+        });
+    </script>
+<script>
+        function addParam(currentUrl, key, val) {
+            var url = new URL(currentUrl);
+            url.searchParams.set(key, val);
+
+            return url.href;
+        }
+
+        $(document).ready(function () {
+            $(".ordering-selector").change(function (event) {
                 event.preventDefault();
                 let my_attr = $(this).serializeArray()
                 window.location.href = addParam(window.location.href, my_attr[0].name, my_attr[0].value)
