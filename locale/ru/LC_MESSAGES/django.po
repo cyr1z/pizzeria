@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 11:36+0300\n"
+"POT-Creation-Date: 2021-03-28 22:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -284,7 +284,7 @@ msgstr "Вегетарианское"
 msgid "Is spicy"
 msgstr "Острое"
 
-#: pizzeria/models.py:381 pizzeria/templates/shop.html:663
+#: pizzeria/models.py:381 pizzeria/templates/shop.html:661
 msgid "For kids"
 msgstr "Для детей"
 
@@ -310,7 +310,7 @@ msgid "Sizes"
 msgstr "Размеры"
 
 #: pizzeria/models.py:477 pizzeria/models.py:522 pizzeria/models.py:617
-#: pizzeria/templates/shop.html:583 pizzeria/templates/shop.html:597
+#: pizzeria/templates/shop.html:582 pizzeria/templates/shop.html:596
 msgid "Price"
 msgstr "Цена"
 
@@ -394,34 +394,41 @@ msgstr "Слайды"
 msgid "All Rights Reserved."
 msgstr "Все права защищены"
 
-#: pizzeria/templates/index.html:173 pizzeria/templates/shop.html:171
-#: pizzeria/templates/shop.html:505
+#: pizzeria/templates/index.html:173 pizzeria/templates/shop-detail.html:114
+#: pizzeria/templates/shop.html:171 pizzeria/templates/shop.html:504
 msgid "Search..."
 msgstr "Поиск..."
 
 #: pizzeria/templates/index.html:221 pizzeria/templates/index.html:932
-#: pizzeria/templates/shop.html:469 pizzeria/templates/shop.html:1219
+#: pizzeria/templates/shop-detail.html:411
+#: pizzeria/templates/shop-detail.html:977 pizzeria/templates/shop.html:468
+#: pizzeria/templates/shop.html:1217
 msgid "Home"
 msgstr "Главная"
 
 #: pizzeria/templates/index.html:223 pizzeria/templates/index.html:933
-#: pizzeria/templates/shop.html:474 pizzeria/templates/shop.html:1222
+#: pizzeria/templates/shop-detail.html:416
+#: pizzeria/templates/shop-detail.html:980 pizzeria/templates/shop.html:473
+#: pizzeria/templates/shop.html:1220
 msgid "Shop"
 msgstr "Заказать"
 
 #: pizzeria/templates/index.html:226 pizzeria/templates/index.html:936
-#: pizzeria/templates/shop.html:478 pizzeria/templates/shop.html:1226
+#: pizzeria/templates/shop-detail.html:420
+#: pizzeria/templates/shop-detail.html:984 pizzeria/templates/shop.html:477
+#: pizzeria/templates/shop.html:1224
 msgid "Reservation"
 msgstr "Бронирование"
 
 #: pizzeria/templates/index.html:248 pizzeria/templates/index.html:788
-#: pizzeria/templates/index.html:937 pizzeria/templates/shop.html:482
-#: pizzeria/templates/shop.html:1229
+#: pizzeria/templates/index.html:937 pizzeria/templates/shop-detail.html:424
+#: pizzeria/templates/shop-detail.html:987 pizzeria/templates/shop.html:481
+#: pizzeria/templates/shop.html:1227
 msgid "Contact"
 msgstr "Контакты"
 
-#: pizzeria/templates/index.html:294 pizzeria/templates/shop.html:805
-#: pizzeria/templates/shop.html:905
+#: pizzeria/templates/index.html:294 pizzeria/templates/shop.html:803
+#: pizzeria/templates/shop.html:903
 msgid "read more"
 msgstr "подробнее"
 
@@ -453,12 +460,13 @@ msgid "view more"
 msgstr "подробнее"
 
 #: pizzeria/templates/index.html:803 pizzeria/templates/index.html:869
-#: pizzeria/templates/shop.html:1113
+#: pizzeria/templates/shop-detail.html:871 pizzeria/templates/shop.html:1111
 msgid "Address: "
 msgstr "Адрес: "
 
 #: pizzeria/templates/index.html:810 pizzeria/templates/index.html:817
-#: pizzeria/templates/index.html:870 pizzeria/templates/shop.html:1116
+#: pizzeria/templates/index.html:870 pizzeria/templates/shop-detail.html:874
+#: pizzeria/templates/shop.html:1114
 msgid "Phone: "
 msgstr "Телефон: "
 
@@ -478,41 +486,74 @@ msgstr "Суббота"
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: pizzeria/templates/index.html:929 pizzeria/templates/shop.html:1215
+#: pizzeria/templates/index.html:929 pizzeria/templates/shop-detail.html:973
+#: pizzeria/templates/shop.html:1213
 msgid "quick links"
 msgstr "Быстрые ссылки"
 
-#: pizzeria/templates/shop.html:611
+#: pizzeria/templates/shop-detail.html:451
+msgid "Price:"
+msgstr "Цена"
+
+#: pizzeria/templates/shop-detail.html:455
+msgid "Size:"
+msgstr "Размер"
+
+#: pizzeria/templates/shop-detail.html:565
+msgid "Quantity:"
+msgstr "Количество:"
+
+#: pizzeria/templates/shop-detail.html:578
+#: pizzeria/templates/shop-detail.html:768
+#: pizzeria/templates/shop-detail.html:827 pizzeria/templates/shop.html:797
+#: pizzeria/templates/shop.html:899
+msgid "Add to cart"
+msgstr "Добавить в корзину"
+
+#: pizzeria/templates/shop-detail.html:579
+msgid "MY favourite"
+msgstr "Добавить в избранное"
+
+#: pizzeria/templates/shop-detail.html:737
+msgid "You Can Also Order"
+msgstr "Вы также можете заказать"
+
+#: pizzeria/templates/shop-detail.html:770
+#: pizzeria/templates/shop-detail.html:829
+msgid "quick view"
+msgstr "Быстрые ссылки"
+
+#: pizzeria/templates/shop-detail.html:798
+msgid "You May Also Like"
+msgstr "Вам также может понравиться"
+
+#: pizzeria/templates/shop.html:610
 msgid "Taste"
 msgstr "На вкус"
 
-#: pizzeria/templates/shop.html:627
+#: pizzeria/templates/shop.html:625
 msgid "Vegetarian"
 msgstr "Вегетарианское"
 
-#: pizzeria/templates/shop.html:645
+#: pizzeria/templates/shop.html:643
 msgid "Spicy"
 msgstr "Острое"
 
-#: pizzeria/templates/shop.html:679
+#: pizzeria/templates/shop.html:677
 msgid "Found"
 msgstr "Найдено"
 
-#: pizzeria/templates/shop.html:681
+#: pizzeria/templates/shop.html:679
 msgid "items"
 msgstr "единиц"
 
-#: pizzeria/templates/shop.html:688
+#: pizzeria/templates/shop.html:686
 msgid "Shown items per page"
 msgstr "Показать на странице"
 
-#: pizzeria/templates/shop.html:713
+#: pizzeria/templates/shop.html:711
 msgid "Sort by"
 msgstr "Сортировать по"
-
-#: pizzeria/templates/shop.html:799 pizzeria/templates/shop.html:901
-msgid "Add to cart"
-msgstr "Добавить в корзину"
 
 #~ msgid "Order Item"
 #~ msgstr "Единица заказа"

@@ -405,12 +405,12 @@ class Food(models.Model):
     @property
     def min_price(self):
         prices = self.price_set.all().values('value')
-        return prices.order_by('-value')[0].get('value')
+        return prices.order_by('value')[0].get('value')
 
     @property
     def max_price(self):
         prices = self.price_set.all().values('value')
-        return prices.order_by('value')[0].get('value')
+        return prices.order_by('-value')[0].get('value')
 
     slug = AutoSlugField(populate_from='unicode_title')
 

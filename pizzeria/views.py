@@ -132,7 +132,6 @@ class Shop(ListView):
             price_limit_min = 0
             price_limit_max = 0
 
-
         qs = self.queryset.annotate(
             max_price_max=Max('price__value'),
             min_price_min=Min('price__value'),
@@ -369,8 +368,72 @@ class FoodDetail(DetailView):
     """
     model = Food
     template_name = 'shop-detail.html'
+    context_object_name = 'food'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
+        this_object = self.get_object()
+
+        # add 5 foods for 'You Can Also Order' blocks
+        also_order_set = Food.objects.filter(
+            is_active=True
+        ).annotate(
+            orders_count=Count('order_item'),
+        ).exclude(
+            category=this_object.category
+        ).exclude(
+            category=6
+        ).order_by('orders_count')
+
+        context.update({'also_order_set': also_order_set[:5]})
+
+        # add 3 similar foods for 'You May Also Like' blocks
+        also_like_set = Food.objects.filter(
+            is_active=True
+        ).annotate(
+            orders_count=Count('order_item'),
+        ).filter(
+            category=this_object.category
+        ).order_by('orders_count')
+
+        context.update({'also_like_set': also_like_set[:3]})
+
+        # add site_name
+        site_name = SiteSettings.objects.first().site_name
+        if site_name:
+            context.update({'site_name': site_name})
+        # add contact_email
+        contact_email = SiteSettings.objects.first().contact_email
+        if contact_email:
+            context.update({'contact_email': contact_email})
+        # add phone_number
+        phone_number = SiteSettings.objects.first().phone_number
+        if phone_number:
+            context.update({'phone_number': phone_number})
+        # add phone_number_two
+        phone_number_two = SiteSettings.objects.first().phone_number_two
+        if phone_number_two:
+            context.update({'phone_number_two': phone_number_two})
+        # add map_coordinates
+        map_coordinates = SiteSettings.objects.first().map_coordinates
+        if map_coordinates:
+            context.update({'map_coordinates': map_coordinates})
+        # add map_link
+        map_link = SiteSettings.objects.first().map_link
+        if map_link:
+            context.update({'map_link': map_link})
+        # add address
+        address = SiteSettings.objects.first().address
+        if address:
+            context.update({'address': address})
+        # add contact_about_text
+        contact_about_text = SiteSettings.objects.first().contact_about_text
+        if contact_about_text:
+            context.update({'contact_about_text': contact_about_text})
+
+        # add currency_symbol
+        currency_symbol = SiteSettings.objects.first().currency_symbol
+        if currency_symbol:
+            context.update({'currency_symbol': currency_symbol})
 
         return context
