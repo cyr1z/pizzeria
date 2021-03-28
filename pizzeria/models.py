@@ -376,6 +376,10 @@ class Food(models.Model):
         default=False,
         verbose_name=_('Is spicy'),
     )
+    is_it_for_kids = models.BooleanField(
+        default=False,
+        verbose_name=_('For kids'),
+    )
     size = models.ManyToManyField(
         'Size',
         through='Price',
@@ -402,7 +406,6 @@ class Food(models.Model):
     def min_price(self):
         prices = self.price_set.all().values('value')
         return prices.order_by('-value')[0].get('value')
-
 
     @property
     def max_price(self):
@@ -518,11 +521,7 @@ class Addon(models.Model):
     price = models.FloatField(
         verbose_name=_("Price"),
     )
-    order_item = models.ManyToManyField(
-        'OrderItem',
-        verbose_name=_('Order Item'),
-        related_name='addons'
-    )
+
 
     class Meta:
         verbose_name = _("Addon")

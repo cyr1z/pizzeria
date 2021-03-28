@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-27 16:02+0200\n"
+"POT-Creation-Date: 2021-03-28 11:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -165,7 +165,7 @@ msgstr "Меню категорій - текст"
 
 #: pizzeria/models.py:142
 msgid "pizza text"
-msgstr ""
+msgstr "текст над піцеюю"
 
 #: pizzeria/models.py:147
 msgid "reservation text"
@@ -227,7 +227,7 @@ msgstr "viber"
 msgid "phone number"
 msgstr "телефон"
 
-#: pizzeria/models.py:273 pizzeria/models.py:561
+#: pizzeria/models.py:273 pizzeria/models.py:560
 msgid "User"
 msgstr "Користувач"
 
@@ -235,8 +235,8 @@ msgstr "Користувач"
 msgid "Users"
 msgstr "Користувачі"
 
-#: pizzeria/models.py:287 pizzeria/models.py:346 pizzeria/models.py:489
-#: pizzeria/models.py:643
+#: pizzeria/models.py:287 pizzeria/models.py:346 pizzeria/models.py:492
+#: pizzeria/models.py:642
 msgid "Title"
 msgstr "Назва"
 
@@ -248,27 +248,27 @@ msgstr "Назва розміру"
 msgid "Size unit"
 msgstr "Одиниця вимірювання"
 
-#: pizzeria/models.py:305 pizzeria/models.py:358 pizzeria/models.py:501
-#: pizzeria/models.py:649
+#: pizzeria/models.py:305 pizzeria/models.py:358 pizzeria/models.py:504
+#: pizzeria/models.py:648
 msgid "Description"
 msgstr "Опис"
 
-#: pizzeria/models.py:308 pizzeria/models.py:361 pizzeria/models.py:504
-#: pizzeria/models.py:652
+#: pizzeria/models.py:308 pizzeria/models.py:361 pizzeria/models.py:507
+#: pizzeria/models.py:651
 msgid "Image"
 msgstr "Зображення"
 
-#: pizzeria/models.py:316 pizzeria/models.py:369 pizzeria/models.py:512
-#: pizzeria/models.py:660
+#: pizzeria/models.py:316 pizzeria/models.py:369 pizzeria/models.py:515
+#: pizzeria/models.py:659
 msgid "Is active"
 msgstr "Активний"
 
-#: pizzeria/models.py:320 pizzeria/models.py:386
+#: pizzeria/models.py:320 pizzeria/models.py:390
 msgid "Is on front"
 msgstr "На головній"
 
-#: pizzeria/models.py:333 pizzeria/models.py:352 pizzeria/models.py:433
-#: pizzeria/models.py:495
+#: pizzeria/models.py:333 pizzeria/models.py:352 pizzeria/models.py:436
+#: pizzeria/models.py:498
 msgid "Category"
 msgstr "Категорія"
 
@@ -277,7 +277,7 @@ msgstr "Категорія"
 msgid "Categories"
 msgstr "Категорії"
 
-#: pizzeria/models.py:373 pizzeria/models.py:516
+#: pizzeria/models.py:373 pizzeria/models.py:519
 msgid "Is vegetarian"
 msgstr "Вегетаріанська"
 
@@ -285,109 +285,109 @@ msgstr "Вегетаріанська"
 msgid "Is spicy"
 msgstr "Гостре"
 
-#: pizzeria/models.py:418 pizzeria/models.py:439 pizzeria/models.py:461
-#: pizzeria/models.py:595 pizzeria/models.py:638
+#: pizzeria/models.py:381 pizzeria/templates/shop.html:663
+msgid "For kids"
+msgstr "Для дітей"
+
+#: pizzeria/models.py:421 pizzeria/models.py:442 pizzeria/models.py:464
+#: pizzeria/models.py:594 pizzeria/models.py:637
 msgid "Food"
 msgstr "Страва"
 
-#: pizzeria/models.py:419
+#: pizzeria/models.py:422
 msgid "Foods"
 msgstr "Страви"
 
-#: pizzeria/models.py:442 pizzeria/models.py:469
+#: pizzeria/models.py:445 pizzeria/models.py:472
 msgid "Value"
 msgstr "Значення"
 
-#: pizzeria/models.py:446 pizzeria/models.py:466 pizzeria/models.py:615
+#: pizzeria/models.py:449 pizzeria/models.py:469 pizzeria/models.py:614
 msgid "Size"
 msgstr "Розмір"
 
-#: pizzeria/models.py:447
+#: pizzeria/models.py:450
 msgid "Sizes"
 msgstr "Розміри"
 
-#: pizzeria/models.py:474 pizzeria/models.py:519 pizzeria/models.py:618
-#: pizzeria/templates/shop.html:596 pizzeria/templates/shop.html:606
+#: pizzeria/models.py:477 pizzeria/models.py:522 pizzeria/models.py:617
+#: pizzeria/templates/shop.html:583 pizzeria/templates/shop.html:597
 msgid "Price"
 msgstr "Ціна"
 
-#: pizzeria/models.py:475
+#: pizzeria/models.py:478
 msgid "Prices"
 msgstr "Ціни"
 
-#: pizzeria/models.py:523
-msgid "Order Item"
-msgstr "Одиниця замовлення"
-
-#: pizzeria/models.py:528 pizzeria/models.py:608
+#: pizzeria/models.py:527 pizzeria/models.py:607
 msgid "Addon"
 msgstr "Доповнення"
 
-#: pizzeria/models.py:529
+#: pizzeria/models.py:528
 msgid "Addons"
 msgstr "Доповнення"
 
-#: pizzeria/models.py:542
+#: pizzeria/models.py:541
 msgid "Created"
 msgstr "Створено"
 
-#: pizzeria/models.py:543
+#: pizzeria/models.py:542
 msgid "Accepted"
 msgstr "Прийнято"
 
-#: pizzeria/models.py:544
+#: pizzeria/models.py:543
 msgid "Ready"
 msgstr "Готово"
 
-#: pizzeria/models.py:545
+#: pizzeria/models.py:544
 msgid "Delivery"
 msgstr "Доставка"
 
-#: pizzeria/models.py:546
+#: pizzeria/models.py:545
 msgid "Given"
 msgstr "Отримано"
 
-#: pizzeria/models.py:550
+#: pizzeria/models.py:549
 msgid "created at"
 msgstr "Створено"
 
-#: pizzeria/models.py:555
+#: pizzeria/models.py:554
 msgid "status"
 msgstr "Статус"
 
-#: pizzeria/models.py:564
+#: pizzeria/models.py:563
 msgid "Paid"
 msgstr "Сплачено"
 
-#: pizzeria/models.py:567
+#: pizzeria/models.py:566
 msgid "Finished"
 msgstr "Завершено"
 
-#: pizzeria/models.py:575 pizzeria/models.py:590
+#: pizzeria/models.py:574 pizzeria/models.py:589
 msgid "Order"
 msgstr "Замовлення"
 
-#: pizzeria/models.py:576
+#: pizzeria/models.py:575
 msgid "Orders"
 msgstr "Замовлення"
 
-#: pizzeria/models.py:601
+#: pizzeria/models.py:600
 msgid "Food two"
 msgstr "Друга страва"
 
-#: pizzeria/models.py:622
+#: pizzeria/models.py:621
 msgid "Order item"
 msgstr "Одиниця замовлення"
 
-#: pizzeria/models.py:623
+#: pizzeria/models.py:622
 msgid "Order items"
 msgstr "Одиниці замовлення"
 
-#: pizzeria/models.py:667
+#: pizzeria/models.py:666
 msgid "Slide"
 msgstr "Слайд"
 
-#: pizzeria/models.py:668
+#: pizzeria/models.py:667
 msgid "Slides"
 msgstr "Слайди"
 
@@ -395,30 +395,34 @@ msgstr "Слайди"
 msgid "All Rights Reserved."
 msgstr "Усі права захищенні"
 
-#: pizzeria/templates/index.html:171 pizzeria/templates/shop.html:167
-#: pizzeria/templates/shop.html:518
+#: pizzeria/templates/index.html:173 pizzeria/templates/shop.html:171
+#: pizzeria/templates/shop.html:505
 msgid "Search..."
 msgstr "Пошук..."
 
-#: pizzeria/templates/index.html:219 pizzeria/templates/shop.html:465
+#: pizzeria/templates/index.html:221 pizzeria/templates/index.html:932
+#: pizzeria/templates/shop.html:469 pizzeria/templates/shop.html:1219
 msgid "Home"
 msgstr "Головна"
 
-#: pizzeria/templates/index.html:223 pizzeria/templates/shop.html:470
+#: pizzeria/templates/index.html:223 pizzeria/templates/index.html:933
+#: pizzeria/templates/shop.html:474 pizzeria/templates/shop.html:1222
 msgid "Shop"
 msgstr "Замовити"
 
-#: pizzeria/templates/index.html:226 pizzeria/templates/shop.html:474
+#: pizzeria/templates/index.html:226 pizzeria/templates/index.html:936
+#: pizzeria/templates/shop.html:478 pizzeria/templates/shop.html:1226
 msgid "Reservation"
 msgstr "Бронювання"
 
-#: pizzeria/templates/index.html:248 pizzeria/templates/index.html:1730
-#: pizzeria/templates/shop.html:496
+#: pizzeria/templates/index.html:248 pizzeria/templates/index.html:788
+#: pizzeria/templates/index.html:937 pizzeria/templates/shop.html:482
+#: pizzeria/templates/shop.html:1229
 msgid "Contact"
 msgstr "Контакти"
 
-#: pizzeria/templates/index.html:294 pizzeria/templates/shop.html:791
-#: pizzeria/templates/shop.html:889
+#: pizzeria/templates/index.html:294 pizzeria/templates/shop.html:805
+#: pizzeria/templates/shop.html:905
 msgid "read more"
 msgstr "докладно"
 
@@ -442,54 +446,74 @@ msgstr "Свіжі соки"
 msgid "Menu categories"
 msgstr "Меню"
 
-#: pizzeria/templates/index.html:526 pizzeria/templates/index.html:1186
-#: pizzeria/templates/index.html:1209 pizzeria/templates/index.html:1232
-#: pizzeria/templates/index.html:1257 pizzeria/templates/index.html:1280
-#: pizzeria/templates/index.html:1303
+#: pizzeria/templates/index.html:526 pizzeria/templates/index.html:570
+#: pizzeria/templates/index.html:593 pizzeria/templates/index.html:616
+#: pizzeria/templates/index.html:641 pizzeria/templates/index.html:664
+#: pizzeria/templates/index.html:687
 msgid "view more"
 msgstr "докладно"
 
-#: pizzeria/templates/index.html:1745 pizzeria/templates/index.html:1809
+#: pizzeria/templates/index.html:803 pizzeria/templates/index.html:869
+#: pizzeria/templates/shop.html:1113
 msgid "Address: "
 msgstr "Адреса: "
 
-#: pizzeria/templates/index.html:1752 pizzeria/templates/index.html:1759
-#: pizzeria/templates/index.html:1810
+#: pizzeria/templates/index.html:810 pizzeria/templates/index.html:817
+#: pizzeria/templates/index.html:870 pizzeria/templates/shop.html:1116
 msgid "Phone: "
 msgstr "Телефон: "
 
-#: pizzeria/templates/index.html:1766
+#: pizzeria/templates/index.html:824
 msgid "working time"
 msgstr "Ми працюємо:"
 
-#: pizzeria/templates/index.html:1773
+#: pizzeria/templates/index.html:831
 msgid "Monday  -  Friday"
 msgstr "Понеділок - П'ятниця"
 
-#: pizzeria/templates/index.html:1774
+#: pizzeria/templates/index.html:832
 msgid "Saturday"
 msgstr "Субота"
 
-#: pizzeria/templates/index.html:1775
+#: pizzeria/templates/index.html:833
 msgid "Sunday"
 msgstr "Неділя"
 
-#: pizzeria/templates/shop.html:671
+#: pizzeria/templates/index.html:929 pizzeria/templates/shop.html:1215
+msgid "quick links"
+msgstr "Швидкі посилання"
+
+#: pizzeria/templates/shop.html:611
+msgid "Taste"
+msgstr "До смаку"
+
+#: pizzeria/templates/shop.html:627
+msgid "Vegetarian"
+msgstr "Вегетаріанське"
+
+#: pizzeria/templates/shop.html:645
+msgid "Spicy"
+msgstr "Гостре"
+
+#: pizzeria/templates/shop.html:679
 msgid "Found"
 msgstr "Знайдено"
 
-#: pizzeria/templates/shop.html:673
+#: pizzeria/templates/shop.html:681
 msgid "items"
 msgstr "одиниць"
 
-#: pizzeria/templates/shop.html:680
+#: pizzeria/templates/shop.html:688
 msgid "Shown items per page"
 msgstr "Показати на сторінці"
 
-#: pizzeria/templates/shop.html:704
+#: pizzeria/templates/shop.html:713
 msgid "Sort by"
 msgstr "Сортувати за"
 
-#: pizzeria/templates/shop.html:785 pizzeria/templates/shop.html:885
+#: pizzeria/templates/shop.html:799 pizzeria/templates/shop.html:901
 msgid "Add to cart"
 msgstr "Додати в корзину"
+
+#~ msgid "Order Item"
+#~ msgstr "Одиниця замовлення"
