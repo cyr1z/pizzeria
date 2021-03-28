@@ -550,158 +550,74 @@
         		<div class="row item-animation scroll-type-1">
         			<div class="col-md-6 col-md-offset-3">
         				<div class="main-caption text-center color-2">
-						   <h2 class="h2 title">Pizza Menu</h2>
+						   <h2 class="h2 title">{% trans 'Pizza Menu' %}</h2>
 						   <div class="empty-sm-20 empty-xs-20"></div> 
 						   <img src="/static/img/title_sepp_3.png" alt="" class="color-overlay">
 						   <div class="empty-sm-15 empty-xs-15"></div>   
 						   <div class="simple-text md">
-							   <p><b>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</b></p>
+                               {% if pizza_menu_text %} <p><b>{{ pizza_menu_text }}</b></p>  {% endif %}
 						   </div>
 						   <div class="empty-lg-70 empty-md-60 empty-sm-60 empty-xs-40"></div>
 						</div>
         			</div>
         		</div>
         		<div class="row item-animation scroll-type-1">
-					<div class="col-md-4">
+                    {% for propose in pizza_block_set|slice:":3" %}
+                    <div class="col-md-4">
 						<div class="menu-item menu-item-6">
 						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_1.jpg" alt="" class="resp-img">
+							  <img src="/{{ propose.image }}" alt="{{ propose.title }}" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
+								  <a href="{% url 'food' propose.slug %}" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
 							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Mediterranean Pizza</a></h4>
+							  <h4 class="h4 caption"><a href="{% url 'food' propose.slug %}" class="link-hover-line">{{ propose.title }}</a></h4>
 							  <div class="empty-sm-5 empty-xs-5"></div>
 							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
+								  <p>{{ propose.description|truncatewords:7 }}</p>
 							  </div>
 							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
+{#								  <p><b>Weight: </b>450g</p>#}
 							  </div>
-							  <div class="menu-price fw-400 title main-col">$6.25</div>
+							  <div class="menu-price fw-400 title main-col">{{ propose.min_price|floatformat:2|intcomma }}{{ currency_symbol }}</div>
 						  </div>
 					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
+					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>
 					</div>
-		     		<div class="col-md-4">
-						<div class="menu-item menu-item-6">
-						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_2.jpg" alt="" class="resp-img">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pizza Margherita</a></h4>
-							  <div class="empty-sm-5 empty-xs-5"></div>
-							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
-							  </div>
-							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
-							  </div>
-							  <div class="menu-price fw-400 title main-col">$9.20</div>
-						  </div>
-					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
-					</div>
-		            <div class="col-md-4">
-						<div class="menu-item menu-item-6">
-						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_3.jpg" alt="" class="resp-img">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pizza al Prosciutto</a></h4>
-							  <div class="empty-sm-5 empty-xs-5"></div>
-							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
-							  </div>
-							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
-							  </div>
-							  <div class="menu-price fw-400 title main-col">$7.35</div>
-						  </div>
-					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
-					</div>
+                    {% endfor %}
+
+
+
 			    </div>
 			    <div class="row item-animation scroll-type-1">
-					<div class="col-md-4">
+                    {% for propose in pizza_block_set|slice:"3:" %}
+					    <div class="col-md-4">
 						<div class="menu-item menu-item-6">
 						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_4.jpg" alt="" class="resp-img">
+							  <img src="/{{ propose.image }}" alt="{{ propose.title }}" class="resp-img">
 							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
+								  <a href="{% url 'food' propose.slug %}" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
 							  </div>
 						  </div>
 						  <div class="text">
 							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Mediterranean Pizza</a></h4>
+							  <h4 class="h4 caption"><a href="{% url 'food' propose.slug %}" class="link-hover-line">{{ propose.title }}</a></h4>
 							  <div class="empty-sm-5 empty-xs-5"></div>
 							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
+								  <p>{{ propose.description|truncatewords:7 }}</p>
 							  </div>
 							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
+{#								  <p><b>Weight: </b>450g</p>#}
 							  </div>
-							  <div class="menu-price fw-400 title main-col">$6.25</div>
+							  <div class="menu-price fw-400 title main-col">{{ propose.min_price|floatformat:2|intcomma }}{{ currency_symbol }}</div>
 						  </div>
 					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
+					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>
 					</div>
-		     		<div class="col-md-4">
-						<div class="menu-item menu-item-6">
-						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_5.jpg" alt="" class="resp-img">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pizza Margherita</a></h4>
-							  <div class="empty-sm-5 empty-xs-5"></div>
-							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
-							  </div>
-							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
-							  </div>
-							  <div class="menu-price fw-400 title main-col">$9.20</div>
-						  </div>
-					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
-					</div>
-		            <div class="col-md-4">
-						<div class="menu-item menu-item-6">
-						  <div class="image">
-							  <img src="/static/img/home-4/main_menu_img_6.jpg" alt="" class="resp-img">
-							  <div class="vertical-align full menu-button">
-								  <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'view more' %}</span></a>
-							  </div>
-						  </div>
-						  <div class="text">
-							  <div class="empty-sm-20 empty-xs-20"></div>
-							  <h4 class="h4 caption"><a href="#" class="link-hover-line">Pizza al Prosciutto</a></h4>
-							  <div class="empty-sm-5 empty-xs-5"></div>
-							  <div class="simple-text">
-								  <p><b>Ingredients: </b>Pepperoni, mushrooms, sausage, pizza sauce, and mozzarella cheese.</p>
-							  </div>
-							  <div class="simple-text">
-								  <p><b>Weight: </b>450g</p>
-							  </div>
-							  <div class="menu-price fw-400 title main-col">$7.35</div>
-						  </div>
-					  </div>
-					  <div class="empty-md-60 empty-sm-30 empty-xs-30"></div>  
-					</div>
+                    {% endfor %}
+
 			    </div>
 		   </div>
 		<div class="empty-lg-70 empty-md-40 empty-sm-30 empty-xs-30"></div>    

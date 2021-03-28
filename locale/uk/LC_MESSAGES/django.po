@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 22:31+0300\n"
+"POT-Creation-Date: 2021-03-28 22:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -400,29 +400,29 @@ msgstr "Усі права захищенні"
 msgid "Search..."
 msgstr "Пошук..."
 
-#: pizzeria/templates/index.html:221 pizzeria/templates/index.html:932
+#: pizzeria/templates/index.html:221 pizzeria/templates/index.html:848
 #: pizzeria/templates/shop-detail.html:411
 #: pizzeria/templates/shop-detail.html:977 pizzeria/templates/shop.html:468
 #: pizzeria/templates/shop.html:1217
 msgid "Home"
 msgstr "Головна"
 
-#: pizzeria/templates/index.html:223 pizzeria/templates/index.html:933
+#: pizzeria/templates/index.html:223 pizzeria/templates/index.html:849
 #: pizzeria/templates/shop-detail.html:416
 #: pizzeria/templates/shop-detail.html:980 pizzeria/templates/shop.html:473
 #: pizzeria/templates/shop.html:1220
 msgid "Shop"
 msgstr "Замовити"
 
-#: pizzeria/templates/index.html:226 pizzeria/templates/index.html:936
+#: pizzeria/templates/index.html:226 pizzeria/templates/index.html:852
 #: pizzeria/templates/shop-detail.html:420
 #: pizzeria/templates/shop-detail.html:984 pizzeria/templates/shop.html:477
 #: pizzeria/templates/shop.html:1224
 msgid "Reservation"
 msgstr "Бронювання"
 
-#: pizzeria/templates/index.html:248 pizzeria/templates/index.html:788
-#: pizzeria/templates/index.html:937 pizzeria/templates/shop-detail.html:424
+#: pizzeria/templates/index.html:248 pizzeria/templates/index.html:704
+#: pizzeria/templates/index.html:853 pizzeria/templates/shop-detail.html:424
 #: pizzeria/templates/shop-detail.html:987 pizzeria/templates/shop.html:481
 #: pizzeria/templates/shop.html:1227
 msgid "Contact"
@@ -453,41 +453,43 @@ msgstr "Свіжі соки"
 msgid "Menu categories"
 msgstr "Меню"
 
-#: pizzeria/templates/index.html:526 pizzeria/templates/index.html:570
-#: pizzeria/templates/index.html:593 pizzeria/templates/index.html:616
-#: pizzeria/templates/index.html:641 pizzeria/templates/index.html:664
-#: pizzeria/templates/index.html:687
+#: pizzeria/templates/index.html:526 pizzeria/templates/index.html:571
+#: pizzeria/templates/index.html:601
 msgid "view more"
 msgstr "докладно"
 
-#: pizzeria/templates/index.html:803 pizzeria/templates/index.html:869
+#: pizzeria/templates/index.html:553
+msgid "Pizza Menu"
+msgstr "Піца меню"
+
+#: pizzeria/templates/index.html:719 pizzeria/templates/index.html:785
 #: pizzeria/templates/shop-detail.html:871 pizzeria/templates/shop.html:1111
 msgid "Address: "
 msgstr "Адреса: "
 
-#: pizzeria/templates/index.html:810 pizzeria/templates/index.html:817
-#: pizzeria/templates/index.html:870 pizzeria/templates/shop-detail.html:874
+#: pizzeria/templates/index.html:726 pizzeria/templates/index.html:733
+#: pizzeria/templates/index.html:786 pizzeria/templates/shop-detail.html:874
 #: pizzeria/templates/shop.html:1114
 msgid "Phone: "
 msgstr "Телефон: "
 
-#: pizzeria/templates/index.html:824
+#: pizzeria/templates/index.html:740
 msgid "working time"
 msgstr "Ми працюємо:"
 
-#: pizzeria/templates/index.html:831
+#: pizzeria/templates/index.html:747
 msgid "Monday  -  Friday"
 msgstr "Понеділок - П'ятниця"
 
-#: pizzeria/templates/index.html:832
+#: pizzeria/templates/index.html:748
 msgid "Saturday"
 msgstr "Субота"
 
-#: pizzeria/templates/index.html:833
+#: pizzeria/templates/index.html:749
 msgid "Sunday"
 msgstr "Неділя"
 
-#: pizzeria/templates/index.html:929 pizzeria/templates/shop-detail.html:973
+#: pizzeria/templates/index.html:845 pizzeria/templates/shop-detail.html:973
 #: pizzeria/templates/shop.html:1213
 msgid "quick links"
 msgstr "Швидкі посилання"

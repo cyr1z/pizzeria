@@ -23,6 +23,20 @@ class MainPage(TemplateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
+
+        # add 6 foods for 'pizza menu' block
+        pizza_block_set = Food.objects.filter(
+            is_active=True
+        ).annotate(
+            orders_count=Count('order_item'),
+        ).filter(
+            is_on_front=True
+        ).filter(
+            category=1
+        ).order_by('orders_count')
+
+        context.update({'pizza_block_set': pizza_block_set[:6]})
+
         # add site_name
         site_name = SiteSettings.objects.first().site_name
         if site_name:
@@ -103,6 +117,10 @@ class MainPage(TemplateView):
         categories = Category.objects.filter(is_on_front=True)[:6]
         if categories:
             context.update({'categories': categories})
+        # add currency_symbol
+        currency_symbol = SiteSettings.objects.first().currency_symbol
+        if currency_symbol:
+            context.update({'currency_symbol': currency_symbol})
 
         return context
 
