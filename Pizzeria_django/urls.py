@@ -25,8 +25,8 @@ urlpatterns = [
     path('', include('pizzeria.urls')),
 ]
 
-urlpatterns += i18n_patterns(
-    path('pages/', include('django.contrib.flatpages.urls')),
-)
+# urlpatterns += i18n_patterns(
+#     path('pages/', include('django.contrib.flatpages.urls')),
+# )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
