@@ -448,7 +448,7 @@
               <div class="empty-sm-20 empty-xs-20"></div>
               <h4 class="h4 sm tt color-2">{{ food.title }}</h4>
               <div class="empty-sm-20 empty-xs-20"></div>
-              <h5 class="h5 sm color-2">{% trans 'Price:'  %}<span class="h4 main-col"><b> {{ food.max_price|floatformat:2|intcomma }}{{ currency_symbol }}</b></span></h5>
+              <h5 class="h5 sm color-2">{% trans 'Price:'  %} <span class="h4 main-col"><span id="cost" >{{ food.max_price|floatformat:2|intcomma }}</span>{{ currency_symbol }}</span></h5>
             </aside>
             <div class="empty-sm-20 empty-xs-20"></div>
             <aside class="product-size">
@@ -460,7 +460,7 @@
               <div class="checkbox-entry-wrap">
 
                 <label class="checkbox-entry">
-                    <input type="radio" name="1" {% if price.price == food.max_price %} checked {% endif %}>
+                    <input type="radio" name="price-size" value="{{ price.price }}" {% if price.price == food.max_price %} checked {% endif %}>
 
                     <span>
                       <i></i>
@@ -567,7 +567,7 @@
                     <button type="button" class="cin-btn cin-decrement">
                       <img src="/static/img/left_arr.png" alt="">
                     </button>
-                    <input type="number" class="cin-input input-field" step="1" value="1" min="0" max="1000">
+                    <input type="number" name="count" id="count" class="cin-input input-field" step="1" value="1" min="0" max="1000">
                     <button type="button" class="cin-btn cin-increment">
                       <img src="/static/img/right_arr.png" alt="">
                     </button>
@@ -1379,7 +1379,23 @@
 <script src="/static/js/jquery.classycountdown.js"></script>
 <script src="/static/js/jarallax.js"></script>
 <script src="/static/js/all.js"></script>
-<script src="/static/js/color.picker.js"></script>
+{#<script src="/static/js/color.picker.js"></script>#}
+<script>
+    $('input[name="price-size"]').click(function(){
+        let count = parseInt($("#count").val());
+        let price = parseFloat($(this).val()) * count;
+	    $("#cost").text(price);
+
+    });
+     $(':input[name="count"]').change(function () {
+         alert('hello');
+     console.log($(this).val())
+     });
+     $('#count input').on('change', function(){
+
+
+    });
+</script>
 
 </body>
 

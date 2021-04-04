@@ -6,12 +6,9 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import TemplateView, ListView, DetailView
-from django.utils.translation import gettext_lazy as _
-from django_filters.views import FilterView
 
 from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES, \
     ORDERINGS, DEFAULT_ORDERING
-from pizzeria.filters import FoodFilter
 from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
 
 
