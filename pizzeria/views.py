@@ -8,7 +8,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView
 
 from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES, \
-    ORDERINGS, DEFAULT_ORDERING
+    ORDERINGS, DEFAULT_ORDERING, PIZZA_CATEGORY, SETS_CATEGORY
 from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
 
 
@@ -29,7 +29,7 @@ class MainPage(TemplateView):
         ).filter(
             is_on_front=True
         ).filter(
-            category=1
+            category=PIZZA_CATEGORY
         ).order_by('orders_count')
 
         context.update({'pizza_block_set': pizza_block_set[:6]})
@@ -397,7 +397,7 @@ class FoodDetail(DetailView):
         ).exclude(
             category=this_object.category
         ).exclude(
-            category=6
+            category=SETS_CATEGORY
         ).order_by('orders_count')
 
         context.update({'also_order_set': also_order_set[:5]})
@@ -409,6 +409,8 @@ class FoodDetail(DetailView):
             orders_count=Count('order_item'),
         ).filter(
             category=this_object.category
+        ).exclude(
+            id=this_object.id
         ).order_by('orders_count')
 
         context.update({'also_like_set': also_like_set[:3]})

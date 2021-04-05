@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 22:56+0300\n"
+"POT-Creation-Date: 2021-04-05 16:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,33 +20,41 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: Pizzeria_django/settings.py:166 pizzeria/models.py:220
+#: Pizzeria_django/settings.py:167 pizzeria/models.py:220
 msgid "Ukrainian"
 msgstr "Украинский"
 
-#: Pizzeria_django/settings.py:167 pizzeria/models.py:221
+#: Pizzeria_django/settings.py:168 pizzeria/models.py:221
 msgid "Russian"
 msgstr "Русский"
 
-#: Pizzeria_django/settings.py:168 pizzeria/models.py:222
+#: Pizzeria_django/settings.py:169 pizzeria/models.py:222
 msgid "English"
 msgstr "Английский"
 
-#: Pizzeria_django/settings.py:199
+#: Pizzeria_django/settings.py:200
 msgid "Standart"
 msgstr "Умолчанию"
 
-#: Pizzeria_django/settings.py:200
+#: Pizzeria_django/settings.py:201
 msgid "Popular"
 msgstr "Популярности"
 
-#: Pizzeria_django/settings.py:201
+#: Pizzeria_django/settings.py:202
 msgid "Price: Low to High"
 msgstr "Цене, от меньшей"
 
-#: Pizzeria_django/settings.py:202
+#: Pizzeria_django/settings.py:203
 msgid "Price: High to low"
 msgstr "Цене, от большей"
+
+#: cart/models.py:11
+msgid "Product"
+msgstr "Продукт"
+
+#: cart/models.py:12
+msgid "Products"
+msgstr "Продукты"
 
 #: pizzeria/admin.py:34
 msgid "1 user deactivated"
@@ -226,7 +234,7 @@ msgstr "viber"
 msgid "phone number"
 msgstr "телефон"
 
-#: pizzeria/models.py:273 pizzeria/models.py:560
+#: pizzeria/models.py:273 pizzeria/models.py:566
 msgid "User"
 msgstr "Пользователь"
 
@@ -234,8 +242,8 @@ msgstr "Пользователь"
 msgid "Users"
 msgstr "Пользователи"
 
-#: pizzeria/models.py:287 pizzeria/models.py:346 pizzeria/models.py:492
-#: pizzeria/models.py:642
+#: pizzeria/models.py:287 pizzeria/models.py:346 pizzeria/models.py:498
+#: pizzeria/models.py:648
 msgid "Title"
 msgstr "Название"
 
@@ -247,18 +255,18 @@ msgstr "Название размера"
 msgid "Size unit"
 msgstr "Единица изменерия"
 
-#: pizzeria/models.py:305 pizzeria/models.py:358 pizzeria/models.py:504
-#: pizzeria/models.py:648
+#: pizzeria/models.py:305 pizzeria/models.py:358 pizzeria/models.py:510
+#: pizzeria/models.py:654
 msgid "Description"
 msgstr "Описание"
 
-#: pizzeria/models.py:308 pizzeria/models.py:361 pizzeria/models.py:507
-#: pizzeria/models.py:651
+#: pizzeria/models.py:308 pizzeria/models.py:361 pizzeria/models.py:513
+#: pizzeria/models.py:657
 msgid "Image"
 msgstr "Картинка"
 
-#: pizzeria/models.py:316 pizzeria/models.py:369 pizzeria/models.py:515
-#: pizzeria/models.py:659
+#: pizzeria/models.py:316 pizzeria/models.py:369 pizzeria/models.py:521
+#: pizzeria/models.py:665
 msgid "Is active"
 msgstr "Активен"
 
@@ -266,8 +274,8 @@ msgstr "Активен"
 msgid "Is on front"
 msgstr "На главной"
 
-#: pizzeria/models.py:333 pizzeria/models.py:352 pizzeria/models.py:436
-#: pizzeria/models.py:498
+#: pizzeria/models.py:333 pizzeria/models.py:352 pizzeria/models.py:440
+#: pizzeria/models.py:504
 msgid "Category"
 msgstr "Категория"
 
@@ -276,7 +284,7 @@ msgstr "Категория"
 msgid "Categories"
 msgstr "Категории"
 
-#: pizzeria/models.py:373 pizzeria/models.py:519
+#: pizzeria/models.py:373 pizzeria/models.py:525
 msgid "Is vegetarian"
 msgstr "Вегетарианское"
 
@@ -288,105 +296,105 @@ msgstr "Острое"
 msgid "For kids"
 msgstr "Для детей"
 
-#: pizzeria/models.py:421 pizzeria/models.py:442 pizzeria/models.py:464
-#: pizzeria/models.py:594 pizzeria/models.py:637
+#: pizzeria/models.py:425 pizzeria/models.py:446 pizzeria/models.py:468
+#: pizzeria/models.py:600 pizzeria/models.py:643
 msgid "Food"
 msgstr "Блюдо"
 
-#: pizzeria/models.py:422
+#: pizzeria/models.py:426
 msgid "Foods"
 msgstr "Блюда"
 
-#: pizzeria/models.py:445 pizzeria/models.py:472
+#: pizzeria/models.py:449 pizzeria/models.py:476
 msgid "Value"
 msgstr "Значение"
 
-#: pizzeria/models.py:449 pizzeria/models.py:469 pizzeria/models.py:614
+#: pizzeria/models.py:453 pizzeria/models.py:473 pizzeria/models.py:620
 msgid "Size"
 msgstr "Размер"
 
-#: pizzeria/models.py:450
+#: pizzeria/models.py:454
 msgid "Sizes"
 msgstr "Размеры"
 
-#: pizzeria/models.py:477 pizzeria/models.py:522 pizzeria/models.py:617
+#: pizzeria/models.py:481 pizzeria/models.py:528 pizzeria/models.py:623
 #: pizzeria/templates/shop.html:582 pizzeria/templates/shop.html:596
 msgid "Price"
 msgstr "Цена"
 
-#: pizzeria/models.py:478
+#: pizzeria/models.py:482
 msgid "Prices"
 msgstr "Цены"
 
-#: pizzeria/models.py:527 pizzeria/models.py:607
+#: pizzeria/models.py:533 pizzeria/models.py:613
 msgid "Addon"
 msgstr "Дополнение"
 
-#: pizzeria/models.py:528
+#: pizzeria/models.py:534
 msgid "Addons"
 msgstr "Дополнения"
 
-#: pizzeria/models.py:541
+#: pizzeria/models.py:547
 msgid "Created"
 msgstr "Создан"
 
-#: pizzeria/models.py:542
+#: pizzeria/models.py:548
 msgid "Accepted"
 msgstr "Принят"
 
-#: pizzeria/models.py:543
+#: pizzeria/models.py:549
 msgid "Ready"
 msgstr "Готов"
 
-#: pizzeria/models.py:544
+#: pizzeria/models.py:550
 msgid "Delivery"
 msgstr "Доставка"
 
-#: pizzeria/models.py:545
+#: pizzeria/models.py:551
 msgid "Given"
 msgstr "Получен"
 
-#: pizzeria/models.py:549
+#: pizzeria/models.py:555
 msgid "created at"
 msgstr "Создан"
 
-#: pizzeria/models.py:554
+#: pizzeria/models.py:560
 msgid "status"
 msgstr "Статус"
 
-#: pizzeria/models.py:563
+#: pizzeria/models.py:569
 msgid "Paid"
 msgstr "Оплачен"
 
-#: pizzeria/models.py:566
+#: pizzeria/models.py:572
 msgid "Finished"
 msgstr "Завершен"
 
-#: pizzeria/models.py:574 pizzeria/models.py:589
+#: pizzeria/models.py:580 pizzeria/models.py:595
 msgid "Order"
 msgstr "Заказ"
 
-#: pizzeria/models.py:575
+#: pizzeria/models.py:581
 msgid "Orders"
 msgstr "Заказы"
 
-#: pizzeria/models.py:600
+#: pizzeria/models.py:606
 msgid "Food two"
 msgstr "Второе блюдо"
 
-#: pizzeria/models.py:621
+#: pizzeria/models.py:627
 msgid "Order item"
 msgstr "Единица заказа"
 
-#: pizzeria/models.py:622
+#: pizzeria/models.py:628
 msgid "Order items"
 msgstr "Единицы заказа"
 
-#: pizzeria/models.py:666
+#: pizzeria/models.py:672
 msgid "Slide"
 msgstr "Слайд"
 
-#: pizzeria/models.py:667
+#: pizzeria/models.py:673
 msgid "Slides"
 msgstr "Слайды"
 

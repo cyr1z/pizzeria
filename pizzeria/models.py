@@ -397,7 +397,7 @@ class Food(models.Model):
     @property
     def prices(self):
         prices = tuple(
-            {'price': price.value, 'size': price.size.value}
+            {'price': price.value, 'size': price.size.value, 'id': price.id}
             for price in self.price_set.all()
         )
         return sorted(prices, key=lambda x: x.get('price'))
@@ -411,6 +411,10 @@ class Food(models.Model):
     def max_price(self):
         prices = self.price_set.all().values('value')
         return prices.order_by('-value')[0].get('value')
+
+    @property
+    def max_price_id(self):
+        return self.price_set.filter(value=self.max_price).first().id
 
     slug = AutoSlugField(populate_from='unicode_title')
 
@@ -476,6 +480,8 @@ class Price(models.Model):
         ordering = ['value']
         verbose_name = _("Price")
         verbose_name_plural = _("Prices")
+        unique_together = [['food', 'size']]
+        index_together = [["food", "size"]]
 
     def __str__(self):
         return f'"{self.food.title}" - {self.size.value} ' \
@@ -521,7 +527,6 @@ class Addon(models.Model):
     price = models.FloatField(
         verbose_name=_("Price"),
     )
-
 
     class Meta:
         verbose_name = _("Addon")

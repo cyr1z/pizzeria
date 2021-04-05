@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'django.contrib.humanize',
+    'cart',
 
 ]
 
@@ -202,3 +203,6 @@ ORDERINGS = {
     '-max_price_max': _('Price: High to low'),
 }
 DEFAULT_ORDERING = 'category'
+PIZZA_CATEGORY = 1
+SETS_CATEGORY = 6
+CART_SESSION_ID = 'cart'
