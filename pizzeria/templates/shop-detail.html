@@ -1391,7 +1391,13 @@
 	    $("#cost").text(price);
 
     });
+    $(":input[name='count']").bind('keyup mouseup', function () {
+        let count = parseInt($(this).val())
+        let price = parseFloat($('input[name="price-size"]:checked').val()) * count;
+        $("#cost").text(price);
 
+
+});
 </script>
 
 </body>
