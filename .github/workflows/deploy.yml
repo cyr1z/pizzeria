@@ -1,22 +1,25 @@
+name: CI
 
-name: Command via SSH
-
-on: push
+on: [push]
 
 jobs:
-  build:
+  deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-
     steps:
-      - name: ls -a via OPEN SSH Private Key
-        uses: garygrossgarten/github-action-ssh@release
+      - uses: actions/checkout@v1
+      - name: Push to server
+        uses: appleboy/ssh-action@master
         with:
-          command: ls -a
           host: ${{ secrets.SSH_HOST }}
-          username: root
+          username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-        env:
-          CI: true
+          script: |
+            cd pizzeria
+            git pull
+            sudo systemctl restart gunicorn
+            sudo systemctl restart nginx
+            echo 'Deployment successful'
 
 
 
