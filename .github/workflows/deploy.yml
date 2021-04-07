@@ -7,14 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
-      uses: ./
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        script: |
-          cd pizzeria
-          git pull
-          sudo systemctl restart gunicorn
-          sudo systemctl restart nginx
-          echo 'Deployment successful'
+      uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd pizzeria
+            git pull
+            sudo systemctl restart gunicorn
+            sudo systemctl restart nginx
+            echo 'Deployment successful'
+          host: ${{ secrets.HOST }}
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+
