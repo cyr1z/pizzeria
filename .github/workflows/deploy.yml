@@ -17,4 +17,4 @@ jobs:
             echo 'Deployment successful'
           host: ${{ secrets.SSH_HOST }}
           user: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          pass: ${{ secrets.SSH_PASSWORD }}
