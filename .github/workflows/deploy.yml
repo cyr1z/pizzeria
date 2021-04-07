@@ -8,7 +8,7 @@ jobs:
     steps:
     - name: executing remote ssh commands using password
       uses: fifsky/ssh-action@master
-        with:
+      with:
           command: |
             cd pizzeria
             git pull
@@ -16,6 +16,5 @@ jobs:
             sudo systemctl restart nginx
             echo 'Deployment successful'
           host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
