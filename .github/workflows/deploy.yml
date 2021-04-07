@@ -16,5 +16,5 @@ jobs:
             sudo systemctl restart nginx
             echo 'Deployment successful'
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
+          user: ${{ secrets.USERNAME }}
+          pass: ${{ secrets.PASSWORD }}
