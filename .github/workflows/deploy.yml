@@ -15,6 +15,6 @@ jobs:
             sudo systemctl restart gunicorn
             sudo systemctl restart nginx
             echo 'Deployment successful'
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USERNAME }}
-          pass: ${{ secrets.PASSWORD }}
+          host: ${{ secrets.SSH_HOST }}
+          user: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
