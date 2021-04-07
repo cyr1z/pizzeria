@@ -1,21 +1,43 @@
-name: remote ssh command
-on: [push]
-jobs:
 
+name: Command via SSH
+
+on: push
+
+jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
+
     steps:
-    - name: executing remote ssh commands using password
-      uses: fifsky/ssh-action@master
-      with:
-          command: |
-            cd pizzeria
-            git pull
-            sudo systemctl restart gunicorn
-            sudo systemctl restart nginx
-            echo 'Deployment successful'
+      - name: ls -a via OPEN SSH Private Key
+        uses: garygrossgarten/github-action-ssh@release
+        with:
+          command: ls -a
           host: ${{ secrets.SSH_HOST }}
-          user: ${{ secrets.SSH_USERNAME }}
-          pass: ${{ secrets.SSH_PASSWORD }}
-          args: -tt
+          username: root
+          password: ${{ secrets.SSH_PASSWORD }}
+        env:
+          CI: true
+
+
+
+#name: remote ssh command
+#on: [push]
+#jobs:
+#
+#  build:
+#    name: Build
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: executing remote ssh commands using password
+#      uses: fifsky/ssh-action@master
+#      with:
+#          command: |
+#            cd pizzeria
+#            git pull
+#            sudo systemctl restart gunicorn
+#            sudo systemctl restart nginx
+#            echo 'Deployment successful'
+#          host: ${{ secrets.SSH_HOST }}
+#          user: ${{ secrets.SSH_USERNAME }}
+#          pass: ${{ secrets.SSH_PASSWORD }}
+#          args: -tt
