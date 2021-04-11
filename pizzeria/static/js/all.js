@@ -533,8 +533,8 @@ jQuery(function ($) {
         var temp = val + step;
         let ggval = temp <= max ? temp : max
         $input.val(ggval);
-        let count = parseInt(ggval);
-        let price = parseFloat($('input[name="price-size"]:checked').val()) * count;
+        let quantity = parseInt(ggval);
+        let price = parseFloat($('input[name="price-size"]:checked').val()) * quantity;
         $("#cost").text(price);
     });
     $(document).on('click', '.custom-input-number .cin-decrement', function (e) {
@@ -545,8 +545,8 @@ jQuery(function ($) {
         var temp = val - step;
         let ggval = temp >= min ? temp : min
         $input.val(ggval);
-        let count = parseInt(ggval);
-        let price = parseFloat($('input[name="price-size"]:checked').val()) * count;
+        let quantity = parseInt(ggval);
+        let price = parseFloat($('input[name="price-size"]:checked').val()) * quantity;
         $("#cost").text(price);
     });
 

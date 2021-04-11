@@ -560,6 +560,7 @@
 {#            </aside>#}
             <div class="empty-sm-40 empty-xs-25"></div>
             <aside>
+                <form  id="formdata" method="POST" role="form">
 
             <div class="buy-bar type-2">
                <div class="fl">
@@ -568,17 +569,20 @@
                     <button type="button" class="cin-btn cin-decrement">
                       <img src="/static/img/left_arr.png" alt="">
                     </button>
-                    <input type="number" name="count" id="count" class="cin-input input-field" step="1" value="1" min="0" max="1000">
+{#                    <input type="number" name="count" id="count" class="cin-input input-field" step="1" value="1" min="{{ quantity_min }}" max="{{ quantity_max }}">#}
+                    {{ form.quantity }}
                     <button type="button" class="cin-btn cin-increment">
                       <img src="/static/img/right_arr.png" alt="">
                     </button>
                   </div>
                   <div class="empty-sm-0 empty-xs-15"></div>
                </div>
-               <input type="hidden" name="product_id" value="{{ food.max_price_id }}">
+{#               <input type="hidden" name="product_id" value="{{ food.max_price_id }}">#}
+                {{ form.product_id }}
 
                <div class="fr">
-                   <a href="#" class="page-button button-style-1 type-2"><span class="txt">{% trans 'Add to cart' %}</span></a>
+                   <button type="submit"  class="page-button button-style-1 type-2"><span class="txt">{% trans 'Add to cart' %}</span></button>
+                   </form>
                    <a href="#" class="page-button button-style-1 type-4"><span class="txt">{% trans 'MY favourite' %}</span></a>
                </div>
             </div>
@@ -1385,18 +1389,43 @@
 {#<script src="/static/js/color.picker.js"></script>#}
 <script>
     $('input[name="price-size"]').click(function(){
-        let count = parseInt($("#count").val());
-        let price = parseFloat($(this).val()) * count;
+        let quantity = parseInt($("#quantity").val());
+        let price = parseFloat($(this).val()) * quantity;
         $('input[name="product_id"]').val($(this).attr('id'))
 	    $("#cost").text(price);
 
     });
     $(":input[name='count']").bind('keyup mouseup', function () {
-        let count = parseInt($(this).val())
+        let quantity = parseInt($(this).val())
         let price = parseFloat($('input[name="price-size"]:checked').val()) * count;
         $("#cost").text(price);
 });
 </script>
+<script type="text/javascript">
+    document.getElementById("formdata").addEventListener("submit", function(e){
+    e.preventDefault();
 
+    let quantity = document.getElementById("quantity").value;
+    let product_id = document.getElementById("product_id").value
+
+
+  let dataForm = new FormData();
+  dataForm.append('quantity', quantity);
+  dataForm.append('product_id', product_id);
+  dataForm.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+  console.log(dataForm.get('product_id'), dataForm.get('csrfmiddlewaretoken'), dataForm.get('count'));
+  fetch('{% url 'cart_add' %}', {
+    method: 'post',
+    body: dataForm
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  });
+</script>
 </body>
 </html>

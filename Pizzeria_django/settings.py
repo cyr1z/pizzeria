@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = [_.strip() for _ in os.getenv("ALLOWED_HOSTS").split(',')]
+ALLOWED_HOSTS = [h.strip() for h in os.getenv("ALLOWED_HOSTS").split(',')]
 
 # Application definition
 
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'django.contrib.humanize',
-    'cart',
+    'cart.apps.CartConfig',
 
 ]
 
@@ -73,8 +73,7 @@ AUTH_USER_MODEL = "pizzeria.PizzaUser"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -168,11 +167,6 @@ LANGUAGES = (
     ('ru', _('Russian')),
     ('en', _('English')),
 )
-# LANGUAGES = (
-#     ('uk', 'Ukrainian'),
-#     ('en', 'English'),
-#     ('ru', 'Russian'),
-# )
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -206,3 +200,5 @@ DEFAULT_ORDERING = 'category'
 PIZZA_CATEGORY = 1
 SETS_CATEGORY = 6
 CART_SESSION_ID = 'cart'
+QUANTITY_MAX = 50
+QUANTITY_MIN = 1

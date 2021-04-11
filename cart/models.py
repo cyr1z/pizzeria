@@ -12,7 +12,7 @@ class Product(Price):
         verbose_name_plural = _("Products")
 
     @property
-    def size(self):
+    def size_value(self):
         return self.size.value
 
     @property

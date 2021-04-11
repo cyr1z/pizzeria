@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 from pizzeria.models import Category, SiteSettings
 
 register = template.Library()
-#
+
 #
 # @register.simple_tag
 # def total_posts():

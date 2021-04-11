@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+
+</head>
+<body>
+<h1>Your shopping cart</h1>
+<table class="cart">
+<thead>
+<tr>
+<th>Image</th>
+<th>Product</th>
+<th>Quantity</th>
+<th>Remove</th>
+<th>Unit price</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+{% for product in this_cart %}
+{#    {{ item.price }}#}
+{#{% with product=item.product %}#}
+<tr>
+<td>
+<a href="{{ product.food.get_absolute_url }}">
+<img src="/{{ product.image }}" style="width:100px;">
+</a>
+</td>
+<td>{{ product.title }} {{ product.size_value }}{{ product.size_unit }}</td>
+<td>{{ product.quantity }}</td>
+{#<td><a href="{% url "cart_remove" product.id %}">Remove</a></td>#}
+<td class="num">{{ product.price }}{{ currency_symbol }}</td>
+<td class="num">{{ product.total_price }}</td>
+</tr>
+{#{% endwith %}#}
+{% endfor %}
+<tr class="total">
+<td>Total</td>
+<td colspan="4"></td>
+<td class="num">{{ cart.get_total_price }}</td>
+</tr>
+</tbody>
+</table>
+<p class="text-right">
+<a href="#" class="button">Checkout</a>
+</p>
+
+</body>
+</html>

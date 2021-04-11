@@ -2,14 +2,15 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, \
     SearchRank
 from django.db.models import Max, Min, Count
 from django.core.paginator import Paginator
-from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import TemplateView, ListView, DetailView
 
 from Pizzeria_django.settings import DEFAULT_PAGINATE, PAGINATE_CHOICES, \
-    ORDERINGS, DEFAULT_ORDERING, PIZZA_CATEGORY, SETS_CATEGORY
-from pizzeria.models import SiteSettings, MainPageSlide, Food, Category
+    ORDERINGS, DEFAULT_ORDERING, PIZZA_CATEGORY, SETS_CATEGORY, QUANTITY_MIN, \
+    QUANTITY_MAX
+from cart.forms import CartAddProductForm
+from pizzeria.models import SiteSettings, MainPageSlide, Food, Category, Price
 
 
 class MainPage(TemplateView):
@@ -414,6 +415,17 @@ class FoodDetail(DetailView):
         ).order_by('orders_count')
 
         context.update({'also_like_set': also_like_set[:3]})
+        # add min and max quantity
+        context.update(
+            {
+                'quantity_min': QUANTITY_MIN,
+                'quantity_max': QUANTITY_MAX,
+            }
+        )
+        # add form for add product to cart
+        context.update({'form': CartAddProductForm()})
+        max_price_id = Price.objects.filter(value=this_object.max_price).first().id
+        context['form']['product_id'].initial = max_price_id
 
         # add site_name
         site_name = SiteSettings.objects.first().site_name
